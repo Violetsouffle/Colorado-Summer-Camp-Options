@@ -184,6 +184,8 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      max-height: 300px;
+      overflow-y: auto;
     }
     
     .checkbox-option {
@@ -363,6 +365,11 @@
       border-color: var(--forest);
     }
     
+    .camp-card.selected {
+      border-color: var(--gold);
+      background: var(--gold-light);
+    }
+    
     .card-header {
       background: linear-gradient(135deg, var(--mint-light), var(--gold-light));
       padding: 20px;
@@ -398,10 +405,42 @@
       border-color: var(--gold);
     }
     
+    .compare-checkbox {
+      position: absolute;
+      top: 60px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s;
+      z-index: 10;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    
+    .compare-checkbox:hover {
+      background: var(--mint-light);
+      border-color: var(--forest);
+      transform: scale(1.1);
+    }
+    
+    .compare-checkbox.active {
+      background: var(--forest);
+      color: white;
+      border-color: var(--forest);
+    }
+    
     .verified-badge {
       position: absolute;
       top: 16px;
-      right: 60px;
+      right: 110px;
       background: var(--verified);
       color: white;
       padding: 4px 12px;
@@ -537,7 +576,6 @@
       cursor: not-allowed;
     }
     
-    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -560,7 +598,7 @@
     .modal-content {
       background: white;
       border-radius: 16px;
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
@@ -658,47 +696,75 @@
       flex-wrap: wrap;
     }
     
-    .comparison-table {
+    .comparison-section {
       background: white;
       border-radius: 16px;
-      overflow: hidden;
       border: 2px solid var(--border);
       box-shadow: var(--shadow);
       margin-bottom: 32px;
+      overflow: hidden;
     }
     
-    .comparison-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    
-    .comparison-table th {
+    .comparison-header {
       background: var(--forest);
       color: white;
-      padding: 14px;
-      text-align: left;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .comparison-header h2 {
+      margin: 0;
+      font-size: 24px;
       font-weight: 600;
-      font-size: 13px;
-      font-family: 'Helvetica Neue', sans-serif;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
     
-    .comparison-table td {
-      padding: 14px;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-      font-family: 'Helvetica Neue', sans-serif;
+    .comparison-body {
+      padding: 24px;
     }
     
-    .comparison-table tr:hover {
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    
+    .comparison-card {
       background: var(--sand);
+      border-radius: 12px;
+      padding: 20px;
+      border: 2px solid var(--border);
+      position: relative;
     }
     
-    .comparison-table .favorite-cell {
-      width: 50px;
-      text-align: center;
+    .comparison-card h4 {
+      margin: 0 40px 12px 0;
+      font-size: 18px;
+      color: var(--brown-dark);
+    }
+    
+    .remove-comparison {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s;
+    }
+    
+    .remove-comparison:hover {
+      background: #ffebee;
+      border-color: #f44336;
+      color: #f44336;
     }
     
     .pagination {
@@ -765,6 +831,7 @@
       .info-grid { grid-template-columns: 1fr; }
       .detail-grid { grid-template-columns: 1fr; }
       .modal-title { font-size: 22px; }
+      .comparison-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -805,7 +872,7 @@
 
       <div class="filter-grid">
         <div class="filter-group">
-          <label class="filter-label">Week / Dates</label>
+          <label class="filter-label">Summer Weeks</label>
           <div class="filter-options" id="weekFilters">
             <!-- Dynamically populated -->
           </div>
@@ -815,12 +882,16 @@
           <label class="filter-label">Duration</label>
           <div class="filter-options">
             <div class="checkbox-option">
-              <input type="checkbox" id="filter-overnight" value="overnight" />
-              <label for="filter-overnight">Overnight Camps</label>
+              <input type="checkbox" id="filter-fullday" value="fullday" />
+              <label for="filter-fullday">Full Day</label>
             </div>
             <div class="checkbox-option">
-              <input type="checkbox" id="filter-day" value="day" />
-              <label for="filter-day">Day Camps</label>
+              <input type="checkbox" id="filter-halfday" value="halfday" />
+              <label for="filter-halfday">Half Day</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="filter-overnight" value="overnight" />
+              <label for="filter-overnight">Overnight / Sleepaway</label>
             </div>
           </div>
         </div>
@@ -886,12 +957,18 @@
           <button class="btn btn-primary" id="compareBtn" style="display: none;">Compare Selected (<span id="compareCount">0</span>)</button>
         </div>
         <div class="btn-group">
-          <div class="view-toggle">
-            <button class="view-btn active" data-view="cards">Cards</button>
-            <button class="view-btn" data-view="table">Compare</button>
-          </div>
           <button class="btn btn-primary" id="shareBtn">Share List</button>
         </div>
+      </div>
+    </div>
+
+    <div id="comparisonSection" class="comparison-section" style="display: none;">
+      <div class="comparison-header">
+        <h2>Comparing <span id="comparisonCountHeader">0</span> Camps</h2>
+        <button class="btn" onclick="clearComparison()" style="background: white; color: var(--forest-dark);">Clear All</button>
+      </div>
+      <div class="comparison-body">
+        <div class="comparison-grid" id="comparisonGrid"></div>
       </div>
     </div>
 
@@ -901,7 +978,6 @@
     </div>
 
     <div id="cardsView" class="cards-grid"></div>
-    <div id="tableView" class="comparison-table" style="display: none;"></div>
     
     <div class="pagination" id="pagination" style="display: none;">
       <button id="prevPage">Previous</button>
@@ -946,14 +1022,32 @@
   </div>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbzjMyCRV1GjC7NTUiGJEke222xuidIU9aFOrfFNXt8ok_9UbrBsCri5bj3J9srQyqxN/exec';
+    // UPDATE THIS LINE WITH YOUR APPS SCRIPT URL:
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwxRiD40cOmWXRyW0EJXRKrtEU_cfqEIrQ8kV9OYye6P-2j7ZRz9eb0tmy-v7ytoifw/exec';
     const RESULTS_PER_PAGE = 50;
+    
+    // Standard summer 2026 weeks
+    const SUMMER_WEEKS = [
+      { label: 'Week 1: May 25-29 (Memorial Day)', start: new Date('2026-05-25'), end: new Date('2026-05-29') },
+      { label: 'Week 2: Jun 1-5', start: new Date('2026-06-01'), end: new Date('2026-06-05') },
+      { label: 'Week 3: Jun 8-12', start: new Date('2026-06-08'), end: new Date('2026-06-12') },
+      { label: 'Week 4: Jun 15-19', start: new Date('2026-06-15'), end: new Date('2026-06-19') },
+      { label: 'Week 5: Jun 22-26', start: new Date('2026-06-22'), end: new Date('2026-06-26') },
+      { label: 'Week 6: Jun 29-Jul 3 (July 4th)', start: new Date('2026-06-29'), end: new Date('2026-07-03') },
+      { label: 'Week 7: Jul 6-10', start: new Date('2026-07-06'), end: new Date('2026-07-10') },
+      { label: 'Week 8: Jul 13-17', start: new Date('2026-07-13'), end: new Date('2026-07-17') },
+      { label: 'Week 9: Jul 20-24', start: new Date('2026-07-20'), end: new Date('2026-07-24') },
+      { label: 'Week 10: Jul 27-31', start: new Date('2026-07-27'), end: new Date('2026-07-31') },
+      { label: 'Week 11: Aug 3-7', start: new Date('2026-08-03'), end: new Date('2026-08-07') },
+      { label: 'Week 12: Aug 10-14', start: new Date('2026-08-10'), end: new Date('2026-08-14') },
+      { label: 'Week 13: Aug 17-21', start: new Date('2026-08-17'), end: new Date('2026-08-21') }
+    ];
     
     let allCamps = [];
     let filteredCamps = [];
     let currentPage = 1;
     let favorites = new Set(JSON.parse(localStorage.getItem('campFavorites') || '[]'));
-    let currentView = 'cards';
+    let comparisonList = new Set(JSON.parse(localStorage.getItem('campComparison') || '[]'));
     let filters = {
       search: '',
       weeks: new Set(),
@@ -980,6 +1074,7 @@
         setupWeekFilters();
         applyFilters();
         setupEventListeners();
+        updateComparisonDisplay();
         
       } catch (error) {
         document.getElementById('cardsView').innerHTML = `
@@ -992,37 +1087,41 @@
       }
     }
 
-    // Setup week filters dynamically
+    // Setup standardized summer week filters
     function setupWeekFilters() {
-      const weeks = new Map();
-      
-      allCamps.forEach(camp => {
-        if (camp.startDate2026 && camp.endDate2026) {
-          const start = new Date(camp.startDate2026);
-          const end = new Date(camp.endDate2026);
-          const key = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
-          weeks.set(key, { start: start.getTime(), end: end.getTime() });
-        }
-      });
-      
-      const sortedWeeks = Array.from(weeks.entries()).sort((a, b) => a[1].start - b[1].start);
       const container = document.getElementById('weekFilters');
       
-      container.innerHTML = sortedWeeks.map(([week, dates]) => `
+      container.innerHTML = SUMMER_WEEKS.map((week, index) => `
         <div class="checkbox-option">
-          <input type="checkbox" id="week-${dates.start}" value="${week}" onchange="toggleWeekFilter('${week}')" />
-          <label for="week-${dates.start}">${week}</label>
+          <input type="checkbox" id="week-${index}" value="${index}" onchange="toggleWeekFilter(${index})" />
+          <label for="week-${index}">${week.label}</label>
         </div>
       `).join('');
     }
 
-    function toggleWeekFilter(week) {
-      if (filters.weeks.has(week)) {
-        filters.weeks.delete(week);
+    function toggleWeekFilter(weekIndex) {
+      if (filters.weeks.has(weekIndex)) {
+        filters.weeks.delete(weekIndex);
       } else {
-        filters.weeks.add(week);
+        filters.weeks.add(weekIndex);
       }
       applyFilters();
+    }
+    
+    // Check if camp overlaps with a selected week
+    function campMatchesWeek(camp, weekIndex) {
+      if (!camp.startDate2026 || !camp.endDate2026) return false;
+      
+      try {
+        const campStart = new Date(camp.startDate2026);
+        const campEnd = new Date(camp.endDate2026);
+        const week = SUMMER_WEEKS[weekIndex];
+        
+        // Camp matches if it overlaps with the week
+        return (campStart <= week.end && campEnd >= week.start);
+      } catch (e) {
+        return false;
+      }
     }
 
     // Setup event listeners
@@ -1043,7 +1142,7 @@
       });
 
       // Duration filters
-      ['overnight', 'day'].forEach(type => {
+      ['fullday', 'halfday', 'overnight'].forEach(type => {
         document.getElementById(`filter-${type}`).addEventListener('change', (e) => {
           if (e.target.checked) {
             filters.duration.add(type);
@@ -1080,23 +1179,16 @@
 
       document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
       document.getElementById('showFavorites').addEventListener('click', toggleFavoritesView);
+      document.getElementById('compareBtn').addEventListener('click', scrollToComparison);
       document.getElementById('shareBtn').addEventListener('click', () => {
         document.getElementById('shareModal').classList.add('active');
-      });
-
-      document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentView = btn.dataset.view;
-          renderCurrentView();
-        });
       });
 
       document.getElementById('prevPage').addEventListener('click', () => {
         if (currentPage > 1) {
           currentPage--;
-          renderCurrentView();
+          renderCards();
+          renderPagination();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
@@ -1105,7 +1197,8 @@
         const totalPages = Math.ceil(filteredCamps.length / RESULTS_PER_PAGE);
         if (currentPage < totalPages) {
           currentPage++;
-          renderCurrentView();
+          renderCards();
+          renderPagination();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
@@ -1124,12 +1217,15 @@
           }
         }
         
-        // Weeks
+        // Weeks - check if camp overlaps with ANY selected week
         if (filters.weeks.size > 0) {
-          const start = new Date(camp.startDate2026);
-          const end = new Date(camp.endDate2026);
-          const campWeek = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
-          if (!filters.weeks.has(campWeek)) return false;
+          let matchesAnyWeek = false;
+          filters.weeks.forEach(weekIndex => {
+            if (campMatchesWeek(camp, weekIndex)) {
+              matchesAnyWeek = true;
+            }
+          });
+          if (!matchesAnyWeek) return false;
         }
         
         // Age range
@@ -1142,11 +1238,22 @@
           if (maxAge < filters.ageMax) return false;
         }
         
-        // Duration
+        // Duration - improved logic
         if (filters.duration.size > 0) {
-          const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
-          if (filters.duration.has('overnight') && !isOvernight) return false;
-          if (filters.duration.has('day') && isOvernight) return false;
+          const duration = (camp.duration || '').toLowerCase();
+          let matches = false;
+          
+          if (filters.duration.has('overnight') && (duration.includes('overnight') || duration.includes('sleepaway'))) {
+            matches = true;
+          }
+          if (filters.duration.has('fullday') && (duration.includes('full') || duration.includes('day') && !duration.includes('half'))) {
+            matches = true;
+          }
+          if (filters.duration.has('halfday') && duration.includes('half')) {
+            matches = true;
+          }
+          
+          if (!matches) return false;
         }
         
         // Setting
@@ -1174,7 +1281,8 @@
       
       currentPage = 1;
       updateStats();
-      renderCurrentView();
+      renderCards();
+      renderPagination();
     }
 
     // Update stats
@@ -1184,20 +1292,6 @@
         filters.favoritesOnly ? 
         `${filteredCamps.length} favorite camp${filteredCamps.length !== 1 ? 's' : ''}` :
         `${filteredCamps.length} camp${filteredCamps.length !== 1 ? 's' : ''} found`;
-    }
-
-    // Render current view
-    function renderCurrentView() {
-      if (currentView === 'cards') {
-        document.getElementById('cardsView').style.display = 'grid';
-        document.getElementById('tableView').style.display = 'none';
-        renderCards();
-      } else {
-        document.getElementById('cardsView').style.display = 'none';
-        document.getElementById('tableView').style.display = 'block';
-        renderTable();
-      }
-      renderPagination();
     }
 
     // Render cards
@@ -1219,8 +1313,10 @@
       const pageCamps = filteredCamps.slice(start, end);
       
       container.innerHTML = pageCamps.map((camp, index) => {
+        const globalIndex = start + index;
         const isFav = favorites.has(camp.campName);
-        const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
+        const isComparing = comparisonList.has(camp.campName);
+        const isOvernight = (camp.duration || '').toLowerCase().includes('overnight') || (camp.duration || '').toLowerCase().includes('sleepaway');
         const hasAftercare = camp.aftercareAvailable === 'Y';
         const hasScholarship = camp.scholarshipsOffered === 'Y';
         const hasCIT = camp.citProgram === 'Y';
@@ -1230,10 +1326,13 @@
         const setting = camp.indoorOutdoor || 'Not specified';
         
         return `
-          <div class="camp-card" onclick="openCampModal(${start + index})">
+          <div class="camp-card ${isComparing ? 'selected' : ''}" onclick="openCampModal(${globalIndex})">
             <div class="card-header">
               <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}')">
                 ${isFav ? '★' : '☆'}
+              </button>
+              <button class="compare-checkbox ${isComparing ? 'active' : ''}" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}')">
+                ${isComparing ? '✓' : '+'}
               </button>
               ${isVerified ? '<div class="verified-badge">✓ Verified</div>' : ''}
               <div class="card-title">${escapeHtml(camp.campName)}</div>
@@ -1292,6 +1391,80 @@
       }).join('');
     }
 
+    // Comparison functions
+    function toggleComparison(event, campName) {
+      event.stopPropagation();
+      
+      if (comparisonList.has(campName)) {
+        comparisonList.delete(campName);
+      } else {
+        comparisonList.add(campName);
+      }
+      
+      localStorage.setItem('campComparison', JSON.stringify([...comparisonList]));
+      updateComparisonDisplay();
+      renderCards();
+    }
+
+    function updateComparisonDisplay() {
+      const count = comparisonList.size;
+      document.getElementById('compareCount').textContent = count;
+      document.getElementById('comparisonCountHeader').textContent = count;
+      
+      const compareBtn = document.getElementById('compareBtn');
+      const comparisonSection = document.getElementById('comparisonSection');
+      
+      if (count > 0) {
+        compareBtn.style.display = 'block';
+        comparisonSection.style.display = 'block';
+        renderComparisonGrid();
+      } else {
+        compareBtn.style.display = 'none';
+        comparisonSection.style.display = 'none';
+      }
+    }
+
+    function renderComparisonGrid() {
+      const container = document.getElementById('comparisonGrid');
+      const camps = allCamps.filter(c => comparisonList.has(c.campName));
+      
+      container.innerHTML = camps.map(camp => {
+        const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
+        const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
+        const regLink = (camp.registrationLink || '').trim();
+        
+        return `
+          <div class="comparison-card">
+            <button class="remove-comparison" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}')">×</button>
+            <h4>${escapeHtml(camp.campName)} ${isVerified ? '✓' : ''}</h4>
+            <div style="font-size: 14px; line-height: 1.8;">
+              <p><strong>Location:</strong> ${escapeHtml(camp.location)}</p>
+              <p><strong>Ages:</strong> ${camp.ageMin}-${camp.ageMax}</p>
+              <p><strong>Dates:</strong> ${formatDateRange(camp.startDate2026, camp.endDate2026)}</p>
+              <p><strong>Hours:</strong> ${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}</p>
+              <p><strong>Cost:</strong> ${escapeHtml(camp.costRange || 'Contact')}</p>
+              <p><strong>Duration:</strong> ${isOvernight ? 'Overnight' : 'Day Camp'}</p>
+              <p><strong>Setting:</strong> ${camp.indoorOutdoor || 'Not specified'}</p>
+              <p><strong>Aftercare:</strong> ${camp.aftercareAvailable === 'Y' ? 'Yes' : 'No'}</p>
+              <p><strong>Scholarships:</strong> ${camp.scholarshipsOffered === 'Y' ? 'Yes' : 'No'}</p>
+              ${regLink ? `<p><a href="${regLink}" target="_blank" style="color: var(--forest); font-weight: 700;">Register →</a></p>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function clearComparison() {
+      comparisonList.clear();
+      localStorage.setItem('campComparison', JSON.stringify([]));
+      updateComparisonDisplay();
+      renderCards();
+    }
+
+    function scrollToComparison() {
+      document.getElementById('comparisonSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     // Open camp modal with full details
     function openCampModal(index) {
       const camp = filteredCamps[index];
@@ -1333,7 +1506,7 @@
             <div class="detail-value">${escapeHtml(camp.costRange || 'Contact for pricing')}</div>
             
             <div class="detail-label">Duration</div>
-            <div class="detail-value">${isOvernight ? 'Overnight Camp' : 'Day Camp'}</div>
+            <div class="detail-value">${camp.duration || 'Not specified'}</div>
             
             <div class="detail-label">Setting</div>
             <div class="detail-value">${camp.indoorOutdoor || 'Not specified'}</div>
@@ -1357,8 +1530,11 @@
         
         <div class="detail-section">
           <div class="modal-actions">
-            <button class="btn btn-primary favorite-btn-large" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
+            <button class="btn btn-primary" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
               ${isFav ? '★ Remove from Favorites' : '☆ Add to Favorites'}
+            </button>
+            <button class="btn btn-secondary" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
+              ${comparisonList.has(camp.campName) ? 'Remove from Comparison' : 'Add to Comparison'}
             </button>
             ${regLink ? 
               `<a href="${regLink}" target="_blank" class="btn btn-primary" style="text-decoration: none;">Register Now →</a>` : 
@@ -1373,78 +1549,6 @@
 
     function closeCampModal() {
       document.getElementById('campModal').classList.remove('active');
-    }
-
-    // Render table
-    function renderTable() {
-      const container = document.getElementById('tableView');
-      
-      if (filteredCamps.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <h3>No camps to compare</h3>
-            <p>Adjust your filters to see results</p>
-          </div>
-        `;
-        return;
-      }
-      
-      const start = (currentPage - 1) * RESULTS_PER_PAGE;
-      const end = start + RESULTS_PER_PAGE;
-      const pageCamps = filteredCamps.slice(start, end);
-      
-      container.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th class="favorite-cell"></th>
-              <th>Camp Name</th>
-              <th>Location</th>
-              <th>Ages</th>
-              <th>Dates</th>
-              <th>Hours</th>
-              <th>Cost</th>
-              <th>Aftercare</th>
-              <th>Duration</th>
-              <th>Setting</th>
-              <th>Verified</th>
-              <th>Register</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${pageCamps.map((camp, index) => {
-              const isFav = favorites.has(camp.campName);
-              const regLink = (camp.registrationLink || '').trim();
-              const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
-              const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
-              
-              return `
-                <tr onclick="openCampModal(${start + index})" style="cursor: pointer;">
-                  <td class="favorite-cell">
-                    <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(event, '${escapeHtml(camp.campName)}')">
-                      ${isFav ? '★' : '☆'}
-                    </button>
-                  </td>
-                  <td><strong>${escapeHtml(camp.campName)}</strong></td>
-                  <td>${escapeHtml(camp.location)}</td>
-                  <td>${camp.ageMin}-${camp.ageMax}</td>
-                  <td>${formatDateRange(camp.startDate2026, camp.endDate2026)}</td>
-                  <td>${camp.startTime && camp.endTime ? `${camp.startTime}-${camp.endTime}` : '—'}</td>
-                  <td>${escapeHtml(camp.costRange || 'Contact')}</td>
-                  <td>${camp.aftercareAvailable === 'Y' ? 'Yes' : '—'}</td>
-                  <td>${isOvernight ? 'Overnight' : 'Day'}</td>
-                  <td>${camp.indoorOutdoor || '—'}</td>
-                  <td>${isVerified ? '✓' : '—'}</td>
-                  <td>${regLink ? 
-                    `<a href="${regLink}" target="_blank" onclick="event.stopPropagation()" style="color: var(--forest); font-weight: 700;">Register</a>` : 
-                    '—'
-                  }</td>
-                </tr>
-              `;
-            }).join('')}
-          </tbody>
-        </table>
-      `;
     }
 
     // Render pagination
@@ -1477,7 +1581,7 @@
       document.getElementById('favCount').textContent = favorites.size;
       document.getElementById('favBtnCount').textContent = favorites.size;
       
-      renderCurrentView();
+      renderCards();
     }
 
     // Clear all filters
@@ -1543,7 +1647,7 @@
         `${c.startTime || ''} - ${c.endTime || ''}`,
         c.costRange,
         c.aftercareAvailable === 'Y' ? 'Yes' : 'No',
-        (c.duration || '').toLowerCase().includes('overnight') ? 'Overnight' : 'Day',
+        c.duration || '',
         c.indoorOutdoor,
         c.scholarshipsOffered === 'Y' ? 'Yes' : 'No',
         c.citProgram === 'Y' ? 'Yes' : 'No',
