@@ -19,6 +19,7 @@
       --mint-light: #e8f5e9;
       --gold: #d4af37;
       --gold-light: #f4e5b8;
+      --verified: #4caf50;
       
       --text: #3e3632;
       --text-light: #7a7168;
@@ -383,6 +384,7 @@
       justify-content: center;
       font-size: 18px;
       transition: all 0.2s;
+      z-index: 10;
     }
     
     .favorite-btn:hover {
@@ -396,11 +398,24 @@
       border-color: var(--gold);
     }
     
+    .verified-badge {
+      position: absolute;
+      top: 16px;
+      right: 60px;
+      background: var(--verified);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    
     .card-title {
       font-size: 20px;
       font-weight: 600;
       color: var(--brown-dark);
-      margin: 0 40px 8px 0;
+      margin: 0 120px 8px 0;
       line-height: 1.3;
     }
     
@@ -412,6 +427,17 @@
     
     .card-body {
       padding: 20px;
+    }
+    
+    .camp-description {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     
     .info-grid {
@@ -467,20 +493,22 @@
       color: var(--brown-dark);
     }
     
+    .tag.cit {
+      background: #e3f2fd;
+      border-color: #90caf9;
+      color: #1565c0;
+    }
+    
+    .tag.school-day {
+      background: #fff3e0;
+      border-color: #ffb74d;
+      color: #e65100;
+    }
+    
     .card-footer {
       padding: 16px 20px;
       background: var(--sand);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       border-top: 1px solid var(--border);
-    }
-    
-    .cost {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--brown-dark);
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
     .reg-link {
@@ -494,6 +522,8 @@
       font-family: 'Helvetica Neue', sans-serif;
       transition: all 0.2s;
       border: none;
+      display: inline-block;
+      text-align: center;
     }
     
     .reg-link:hover {
@@ -507,12 +537,134 @@
       cursor: not-allowed;
     }
     
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(62, 54, 50, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 3px solid var(--forest);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    
+    .modal-header {
+      padding: 24px;
+      background: linear-gradient(135deg, var(--mint-light), var(--gold-light));
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    
+    .modal-title-section {
+      flex: 1;
+    }
+    
+    .modal-title {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+    
+    .modal-subtitle {
+      font-size: 16px;
+      color: var(--text-light);
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      color: var(--text-light);
+      line-height: 1;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    
+    .modal-body {
+      padding: 32px;
+    }
+    
+    .detail-section {
+      margin-bottom: 32px;
+    }
+    
+    .detail-section h3 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      color: var(--brown);
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+    
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px 24px;
+      margin-bottom: 16px;
+    }
+    
+    .detail-label {
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 14px;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    
+    .detail-value {
+      font-size: 14px;
+      color: var(--text);
+    }
+    
+    .detail-description {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
     .comparison-table {
       background: white;
       border-radius: 16px;
       overflow: hidden;
       border: 2px solid var(--border);
       box-shadow: var(--shadow);
+      margin-bottom: 32px;
     }
     
     .comparison-table table {
@@ -587,91 +739,6 @@
       font-family: 'Helvetica Neue', sans-serif;
     }
     
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(62, 54, 50, 0.7);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    
-    .modal.active {
-      display: flex;
-    }
-    
-    .modal-content {
-      background: white;
-      border-radius: 16px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      border: 3px solid var(--forest);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    
-    .modal-header {
-      padding: 24px;
-      background: linear-gradient(135deg, var(--mint-light), var(--gold-light));
-      border-bottom: 2px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .modal-header h2 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--brown-dark);
-    }
-    
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--text-light);
-      line-height: 1;
-      padding: 0;
-    }
-    
-    .modal-body {
-      padding: 24px;
-    }
-    
-    .share-options {
-      display: grid;
-      gap: 12px;
-    }
-    
-    .share-btn {
-      padding: 16px;
-      border-radius: 12px;
-      border: 2px solid var(--border);
-      background: white;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.2s;
-      font-family: 'Helvetica Neue', sans-serif;
-      color: var(--text);
-    }
-    
-    .share-btn:hover {
-      background: var(--mint-light);
-      border-color: var(--forest);
-    }
-    
     .empty-state {
       text-align: center;
       padding: 80px 20px;
@@ -696,6 +763,8 @@
       .filter-grid { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .modal-title { font-size: 22px; }
     }
   </style>
 </head>
@@ -735,6 +804,13 @@
       </div>
 
       <div class="filter-grid">
+        <div class="filter-group">
+          <label class="filter-label">Week / Dates</label>
+          <div class="filter-options" id="weekFilters">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
         <div class="filter-group">
           <label class="filter-label">Duration</label>
           <div class="filter-options">
@@ -786,6 +862,10 @@
               <input type="checkbox" id="filter-schoolday" value="schoolday" />
               <label for="filter-schoolday">School Day Off Camps</label>
             </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="filter-verified" value="verified" />
+              <label for="filter-verified">Verified by Camp</label>
+            </div>
           </div>
         </div>
 
@@ -803,6 +883,7 @@
         <div class="btn-group">
           <button class="btn" id="clearFilters">Reset Filters</button>
           <button class="btn btn-secondary" id="showFavorites">My Favorites (<span id="favBtnCount">0</span>)</button>
+          <button class="btn btn-primary" id="compareBtn" style="display: none;">Compare Selected (<span id="compareCount">0</span>)</button>
         </div>
         <div class="btn-group">
           <div class="view-toggle">
@@ -829,6 +910,18 @@
     </div>
   </div>
 
+  <!-- Camp Details Modal -->
+  <div class="modal" id="campModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-section" id="modalTitleSection"></div>
+        <button class="close-btn" onclick="closeCampModal()">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
   <div class="modal" id="shareModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -836,15 +929,15 @@
         <button class="close-btn" onclick="closeShareModal()">×</button>
       </div>
       <div class="modal-body">
-        <div class="share-options">
-          <button class="share-btn" onclick="emailList()">
-            <span>📧</span> Email myself this list
+        <div style="display: grid; gap: 12px;">
+          <button class="btn btn-primary" onclick="emailList()">
+            Email myself this list
           </button>
-          <button class="share-btn" onclick="copyShareLink()">
-            <span>🔗</span> Copy shareable link
+          <button class="btn btn-primary" onclick="copyShareLink()">
+            Copy shareable link
           </button>
-          <button class="share-btn" onclick="downloadCSV()">
-            <span>📥</span> Download as spreadsheet
+          <button class="btn btn-primary" onclick="downloadCSV()">
+            Download as spreadsheet
           </button>
         </div>
         <div id="shareMessage" style="margin-top: 16px; padding: 12px; border-radius: 8px; background: var(--mint-light); color: var(--forest-dark); font-weight: 600; display: none;"></div>
@@ -853,7 +946,7 @@
   </div>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbybvcVR1t-ShdAB7FMGawtPEU0zZYQ2UUpQASoMsMlP-iCrqKz0ahAvLQ3iLl1ejA6W/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbxztC2VToUuV-BX92hZ_TTxZfutOm8QWMCkYswm79ergkCCxq1sDGjxCWv_8UJ8d5WU/exec';
     const RESULTS_PER_PAGE = 50;
     
     let allCamps = [];
@@ -863,6 +956,7 @@
     let currentView = 'cards';
     let filters = {
       search: '',
+      weeks: new Set(),
       duration: new Set(),
       setting: new Set(),
       features: new Set(),
@@ -883,6 +977,7 @@
         document.getElementById('totalCamps').textContent = allCamps.length.toLocaleString();
         document.getElementById('lastUpdated').textContent = new Date(data.lastUpdated).toLocaleDateString();
         
+        setupWeekFilters();
         applyFilters();
         setupEventListeners();
         
@@ -895,6 +990,39 @@
           </div>
         `;
       }
+    }
+
+    // Setup week filters dynamically
+    function setupWeekFilters() {
+      const weeks = new Map();
+      
+      allCamps.forEach(camp => {
+        if (camp.startDate2026 && camp.endDate2026) {
+          const start = new Date(camp.startDate2026);
+          const end = new Date(camp.endDate2026);
+          const key = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+          weeks.set(key, { start: start.getTime(), end: end.getTime() });
+        }
+      });
+      
+      const sortedWeeks = Array.from(weeks.entries()).sort((a, b) => a[1].start - b[1].start);
+      const container = document.getElementById('weekFilters');
+      
+      container.innerHTML = sortedWeeks.map(([week, dates]) => `
+        <div class="checkbox-option">
+          <input type="checkbox" id="week-${dates.start}" value="${week}" onchange="toggleWeekFilter('${week}')" />
+          <label for="week-${dates.start}">${week}</label>
+        </div>
+      `).join('');
+    }
+
+    function toggleWeekFilter(week) {
+      if (filters.weeks.has(week)) {
+        filters.weeks.delete(week);
+      } else {
+        filters.weeks.add(week);
+      }
+      applyFilters();
     }
 
     // Setup event listeners
@@ -939,7 +1067,7 @@
       });
 
       // Feature filters
-      ['aftercare', 'scholarship', 'cit', 'schoolday'].forEach(type => {
+      ['aftercare', 'scholarship', 'cit', 'schoolday', 'verified'].forEach(type => {
         document.getElementById(`filter-${type}`).addEventListener('change', (e) => {
           if (e.target.checked) {
             filters.features.add(type);
@@ -969,6 +1097,7 @@
         if (currentPage > 1) {
           currentPage--;
           renderCurrentView();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
 
@@ -977,6 +1106,7 @@
         if (currentPage < totalPages) {
           currentPage++;
           renderCurrentView();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
     }
@@ -992,6 +1122,14 @@
               !(camp.campDescription || '').toLowerCase().includes(q)) {
             return false;
           }
+        }
+        
+        // Weeks
+        if (filters.weeks.size > 0) {
+          const start = new Date(camp.startDate2026);
+          const end = new Date(camp.endDate2026);
+          const campWeek = `${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${end.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+          if (!filters.weeks.has(campWeek)) return false;
         }
         
         // Age range
@@ -1026,6 +1164,7 @@
         if (filters.features.has('scholarship') && camp.scholarshipsOffered !== 'Y') return false;
         if (filters.features.has('cit') && camp.citProgram !== 'Y') return false;
         if (filters.features.has('schoolday') && camp.schoolDayOffCamps !== 'Y') return false;
+        if (filters.features.has('verified') && camp.verified !== 'Y' && camp.verified !== 'Yes') return false;
         
         // Favorites only
         if (filters.favoritesOnly && !favorites.has(camp.campName)) return false;
@@ -1079,23 +1218,32 @@
       const end = start + RESULTS_PER_PAGE;
       const pageCamps = filteredCamps.slice(start, end);
       
-      container.innerHTML = pageCamps.map(camp => {
+      container.innerHTML = pageCamps.map((camp, index) => {
         const isFav = favorites.has(camp.campName);
         const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
         const hasAftercare = camp.aftercareAvailable === 'Y';
         const hasScholarship = camp.scholarshipsOffered === 'Y';
+        const hasCIT = camp.citProgram === 'Y';
+        const hasSchoolDayOff = camp.schoolDayOffCamps === 'Y';
+        const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
         const regLink = (camp.registrationLink || '').trim();
+        const setting = camp.indoorOutdoor || 'Not specified';
         
         return `
-          <div class="camp-card">
+          <div class="camp-card" onclick="openCampModal(${start + index})">
             <div class="card-header">
               <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}')">
                 ${isFav ? '★' : '☆'}
               </button>
+              ${isVerified ? '<div class="verified-badge">✓ Verified</div>' : ''}
               <div class="card-title">${escapeHtml(camp.campName)}</div>
               <div class="card-location">${escapeHtml(camp.location)}</div>
             </div>
             <div class="card-body">
+              ${camp.campDescription ? `
+                <div class="camp-description">${escapeHtml(camp.campDescription)}</div>
+              ` : ''}
+              
               <div class="info-grid">
                 <div class="info-item">
                   <strong>Ages</strong>
@@ -1105,35 +1253,126 @@
                   <strong>Dates</strong>
                   ${formatDateRange(camp.startDate2026, camp.endDate2026)}
                 </div>
-                ${camp.startTime && camp.endTime ? `
+                <div class="info-item">
+                  <strong>Cost</strong>
+                  ${escapeHtml(camp.costRange || 'Contact')}
+                </div>
+                <div class="info-item">
+                  <strong>Hours</strong>
+                  ${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}
+                </div>
+                <div class="info-item">
+                  <strong>Setting</strong>
+                  ${setting}
+                </div>
+                ${camp.enrollmentOpenDate ? `
                   <div class="info-item">
-                    <strong>Hours</strong>
-                    ${camp.startTime} - ${camp.endTime}
-                  </div>
-                ` : ''}
-                ${hasAftercare ? `
-                  <div class="info-item">
-                    <strong>Aftercare</strong>
-                    Available
+                    <strong>Registration Opens</strong>
+                    ${camp.enrollmentOpenDate}
                   </div>
                 ` : ''}
               </div>
+              
               <div class="tags">
                 <span class="tag overnight">${isOvernight ? 'Overnight' : 'Day Camp'}</span>
                 ${hasAftercare ? '<span class="tag aftercare">Aftercare</span>' : ''}
                 ${hasScholarship ? '<span class="tag scholarship">Scholarships</span>' : ''}
+                ${hasCIT ? '<span class="tag cit">CIT Program</span>' : ''}
+                ${hasSchoolDayOff ? '<span class="tag school-day">School Day Off</span>' : ''}
               </div>
             </div>
             <div class="card-footer">
-              <div class="cost">${escapeHtml(camp.costRange || 'Contact for pricing')}</div>
               ${regLink ? 
-                `<a href="${regLink}" target="_blank" class="reg-link" onclick="event.stopPropagation()">Register</a>` : 
-                '<span class="reg-link disabled">Coming Soon</span>'
+                `<a href="${regLink}" target="_blank" class="reg-link" onclick="event.stopPropagation()">Register Now</a>` : 
+                '<span class="reg-link disabled">Registration TBD</span>'
               }
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    // Open camp modal with full details
+    function openCampModal(index) {
+      const camp = filteredCamps[index];
+      const isFav = favorites.has(camp.campName);
+      const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
+      const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
+      const hasAftercare = camp.aftercareAvailable === 'Y';
+      const hasScholarship = camp.scholarshipsOffered === 'Y';
+      const hasCIT = camp.citProgram === 'Y';
+      const hasSchoolDayOff = camp.schoolDayOffCamps === 'Y';
+      const regLink = (camp.registrationLink || '').trim();
+      
+      document.getElementById('modalTitleSection').innerHTML = `
+        <div class="modal-title">${escapeHtml(camp.campName)}</div>
+        <div class="modal-subtitle">${escapeHtml(camp.location)} ${isVerified ? '• <span style="color: var(--verified);">✓ Verified by Camp</span>' : ''}</div>
+      `;
+      
+      document.getElementById('modalBody').innerHTML = `
+        ${camp.campDescription ? `
+          <div class="detail-section">
+            <h3>About This Camp</h3>
+            <div class="detail-description">${escapeHtml(camp.campDescription)}</div>
+          </div>
+        ` : ''}
+        
+        <div class="detail-section">
+          <h3>Schedule & Logistics</h3>
+          <div class="detail-grid">
+            <div class="detail-label">Dates</div>
+            <div class="detail-value">${camp.startDate2026 || 'TBD'} to ${camp.endDate2026 || 'TBD'}</div>
+            
+            <div class="detail-label">Daily Hours</div>
+            <div class="detail-value">${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}</div>
+            
+            <div class="detail-label">Age Range</div>
+            <div class="detail-value">${camp.ageMin}-${camp.ageMax} years old</div>
+            
+            <div class="detail-label">Cost</div>
+            <div class="detail-value">${escapeHtml(camp.costRange || 'Contact for pricing')}</div>
+            
+            <div class="detail-label">Duration</div>
+            <div class="detail-value">${isOvernight ? 'Overnight Camp' : 'Day Camp'}</div>
+            
+            <div class="detail-label">Setting</div>
+            <div class="detail-value">${camp.indoorOutdoor || 'Not specified'}</div>
+            
+            ${camp.enrollmentOpenDate ? `
+              <div class="detail-label">Registration Opens</div>
+              <div class="detail-value">${camp.enrollmentOpenDate}</div>
+            ` : ''}
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <h3>Features & Options</h3>
+          <div class="tags">
+            ${hasAftercare ? '<span class="tag aftercare">Aftercare Available</span>' : '<span class="tag" style="opacity: 0.5;">No Aftercare</span>'}
+            ${hasScholarship ? '<span class="tag scholarship">Scholarships Offered</span>' : ''}
+            ${hasCIT ? '<span class="tag cit">CIT Program</span>' : ''}
+            ${hasSchoolDayOff ? '<span class="tag school-day">School Day Off Camps</span>' : ''}
+          </div>
+        </div>
+        
+        <div class="detail-section">
+          <div class="modal-actions">
+            <button class="btn btn-primary favorite-btn-large" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
+              ${isFav ? '★ Remove from Favorites' : '☆ Add to Favorites'}
+            </button>
+            ${regLink ? 
+              `<a href="${regLink}" target="_blank" class="btn btn-primary" style="text-decoration: none;">Register Now →</a>` : 
+              '<button class="btn" disabled>Registration Coming Soon</button>'
+            }
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('campModal').classList.add('active');
+    }
+
+    function closeCampModal() {
+      document.getElementById('campModal').classList.remove('active');
     }
 
     // Render table
@@ -1164,20 +1403,25 @@
               <th>Ages</th>
               <th>Dates</th>
               <th>Hours</th>
-              <th>Aftercare</th>
               <th>Cost</th>
+              <th>Aftercare</th>
+              <th>Duration</th>
+              <th>Setting</th>
+              <th>Verified</th>
               <th>Register</th>
             </tr>
           </thead>
           <tbody>
-            ${pageCamps.map(camp => {
+            ${pageCamps.map((camp, index) => {
               const isFav = favorites.has(camp.campName);
               const regLink = (camp.registrationLink || '').trim();
+              const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
+              const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
               
               return `
-                <tr>
+                <tr onclick="openCampModal(${start + index})" style="cursor: pointer;">
                   <td class="favorite-cell">
-                    <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}')">
+                    <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(event, '${escapeHtml(camp.campName)}')">
                       ${isFav ? '★' : '☆'}
                     </button>
                   </td>
@@ -1186,10 +1430,13 @@
                   <td>${camp.ageMin}-${camp.ageMax}</td>
                   <td>${formatDateRange(camp.startDate2026, camp.endDate2026)}</td>
                   <td>${camp.startTime && camp.endTime ? `${camp.startTime}-${camp.endTime}` : '—'}</td>
-                  <td>${camp.aftercareAvailable === 'Y' ? 'Yes' : '—'}</td>
                   <td>${escapeHtml(camp.costRange || 'Contact')}</td>
+                  <td>${camp.aftercareAvailable === 'Y' ? 'Yes' : '—'}</td>
+                  <td>${isOvernight ? 'Overnight' : 'Day'}</td>
+                  <td>${camp.indoorOutdoor || '—'}</td>
+                  <td>${isVerified ? '✓' : '—'}</td>
                   <td>${regLink ? 
-                    `<a href="${regLink}" target="_blank" class="reg-link" onclick="event.stopPropagation()">Register</a>` : 
+                    `<a href="${regLink}" target="_blank" onclick="event.stopPropagation()" style="color: var(--forest); font-weight: 700;">Register</a>` : 
                     '—'
                   }</td>
                 </tr>
@@ -1237,6 +1484,7 @@
     function clearAllFilters() {
       filters = {
         search: '',
+        weeks: new Set(),
         duration: new Set(),
         setting: new Set(),
         features: new Set(),
@@ -1286,7 +1534,7 @@
     }
 
     function downloadCSV() {
-      const headers = ['Camp Name', 'Location', 'Ages', 'Dates', 'Hours', 'Cost', 'Aftercare', 'Registration'];
+      const headers = ['Camp Name', 'Location', 'Ages', 'Dates', 'Hours', 'Cost', 'Aftercare', 'Duration', 'Setting', 'Scholarships', 'CIT', 'School Day Off', 'Verified', 'Registration'];
       const rows = filteredCamps.map(c => [
         c.campName,
         c.location,
@@ -1295,6 +1543,12 @@
         `${c.startTime || ''} - ${c.endTime || ''}`,
         c.costRange,
         c.aftercareAvailable === 'Y' ? 'Yes' : 'No',
+        (c.duration || '').toLowerCase().includes('overnight') ? 'Overnight' : 'Day',
+        c.indoorOutdoor,
+        c.scholarshipsOffered === 'Y' ? 'Yes' : 'No',
+        c.citProgram === 'Y' ? 'Yes' : 'No',
+        c.schoolDayOffCamps === 'Y' ? 'Yes' : 'No',
+        c.verified === 'Y' || c.verified === 'Yes' ? 'Yes' : 'No',
         c.registrationLink
       ]);
       
@@ -1318,7 +1572,7 @@
     // Utilities
     function escapeHtml(str) {
       const div = document.createElement('div');
-      div.textContent = str;
+      div.textContent = str || '';
       return div.innerHTML;
     }
 
