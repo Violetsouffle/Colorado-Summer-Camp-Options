@@ -5,8 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colorado Summer Camp Guide 2026</title>
   <meta name="description" content="Find the perfect summer camp in Colorado. Search, compare, and save your favorites from 1000+ camps.">
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="author" content="Colorado Summer Camp Guide">
+  <meta name="copyright" content="© 2026 Colorado Summer Camp Guide. All rights reserved.">
   
   <style>
+    /* Disable text selection for data protection */
+    .camp-card, .comparison-card, .modal-body {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+    
+    /* Add watermark on copy */
+    .camp-card::after, .comparison-card::after {
+      content: '';
+    }
     :root { 
       --cream: #faf8f3;
       --sand: #f5f1e8;
@@ -839,7 +855,7 @@
   <div class="hero">
     <div class="hero-content">
       <h1>Colorado Summer Camp Guide 2026</h1>
-      <p class="tagline">The complete list. Find, compare, and save your perfect camps.</p>
+      <p class="tagline">Find, compare, and save your perfect camps.</p>
       <div class="stats">
         <div class="stat">
           <span class="stat-num" id="totalCamps">---</span>
@@ -864,7 +880,7 @@
           <input 
             type="text" 
             id="searchInput" 
-            placeholder="Search by camp name, location, or activity..."
+            placeholder="Search by camp name, location, activity, and more!"
             autocomplete="off"
           />
         </div>
@@ -986,6 +1002,22 @@
     </div>
   </div>
 
+  <footer style="background: var(--sand); border-top: 2px solid var(--border); padding: 32px 24px; margin-top: 48px;">
+    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+      <div style="background: white; border: 2px solid var(--forest); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+        <h3 style="margin: 0 0 12px 0; color: var(--brown-dark); font-size: 18px;">⚠️ Copyright & Usage Notice</h3>
+        <p style="margin: 0; font-size: 14px; line-height: 1.8; color: var(--text); font-family: 'Helvetica Neue', sans-serif;">
+          This Colorado Summer Camp resource is provided strictly for <strong>personal, non-commercial use</strong> by parents and caregivers. 
+          Any scraping, redistribution, or commercial use of this data is <strong>strictly prohibited</strong> without express written consent. 
+          This database is protected under copyright law.
+        </p>
+      </div>
+      <p style="margin: 0; font-size: 13px; color: var(--text-light); font-family: 'Helvetica Neue', sans-serif;">
+        © 2026 Colorado Summer Camp Guide. All rights reserved. Data is subject to change.
+      </p>
+    </div>
+  </footer>
+
   <!-- Camp Details Modal -->
   <div class="modal" id="campModal">
     <div class="modal-content">
@@ -1048,6 +1080,7 @@
     let currentPage = 1;
     let favorites = new Set(JSON.parse(localStorage.getItem('campFavorites') || '[]'));
     let comparisonList = new Set(JSON.parse(localStorage.getItem('campComparison') || '[]'));
+    let isInitialLoad = true;
     let filters = {
       search: '',
       weeks: new Set(),
@@ -1058,6 +1091,19 @@
       ageMax: null,
       favoritesOnly: false
     };
+
+    // Add copy protection
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add copyright notice to clipboard when copying
+      document.addEventListener('copy', function(e) {
+        const selection = document.getSelection().toString();
+        if (selection.length > 50) {
+          const notice = '\n\n---\nSource: Colorado Summer Camp Guide 2026\nFor personal use only. Redistribution prohibited.\n© 2026 All rights reserved.';
+          e.clipboardData.setData('text/plain', selection + notice);
+          e.preventDefault();
+        }
+      });
+    });
 
     // Load camps
     async function loadCamps() {
@@ -1206,6 +1252,29 @@
 
     // Apply all filters
     function applyFilters() {
+      // On initial load with no filters, show random sample
+      if (isInitialLoad && filters.search === '' && filters.weeks.size === 0 && 
+          filters.duration.size === 0 && filters.setting.size === 0 && 
+          filters.features.size === 0 && !filters.ageMin && !filters.ageMax && 
+          !filters.favoritesOnly) {
+        
+        // Show 5-12 random camps
+        const sampleSize = Math.floor(Math.random() * 8) + 5; // Random between 5-12
+        const shuffled = [...allCamps].sort(() => Math.random() - 0.5);
+        filteredCamps = shuffled.slice(0, sampleSize);
+        
+        currentPage = 1;
+        updateStats();
+        renderCards();
+        renderPagination();
+        
+        document.getElementById('resultsText').textContent = `Showing ${sampleSize} featured camps (refreshes on reload)`;
+        return;
+      }
+      
+      // Mark that we're no longer on initial load once any filter is used
+      isInitialLoad = false;
+      
       filteredCamps = allCamps.filter(camp => {
         // Search
         if (filters.search) {
