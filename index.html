@@ -3,107 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colorado Summer Camp Guide 2026</title>
-  <meta name="description" content="Find the perfect summer camp in Colorado. Search, compare, and save your favorites from 1000+ camps.">
+  <title>Colorado Summer Camp Options</title>
+  <meta name="description" content="Find the perfect summer camp in Colorado. Search, compare, and save your favorites.">
   <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-  <meta name="googlebot" content="noindex, nofollow, noarchive">
-  <meta name="author" content="Colorado Summer Camp Guide">
-  <meta name="copyright" content="© 2026 Colorado Summer Camp Guide. All rights reserved.">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* Disable text selection for data protection */
-    .camp-card, .comparison-card, .modal-body {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text;
-    }
-    
-    /* Add watermark on copy */
-    .camp-card::after, .comparison-card::after {
-      content: '';
-    }
     :root { 
-      --cream: #faf8f3;
-      --sand: #f5f1e8;
-      --brown: #8b7355;
-      --brown-dark: #6b5744;
-      --brown-light: #a89280;
-      --forest: #5a7358;
-      --forest-dark: #3d5a3b;
-      --mint: #c8e6c9;
-      --mint-light: #e8f5e9;
-      --gold: #d4af37;
-      --gold-light: #f4e5b8;
+      --cream: #fff8e9;
+      --cream-dark: #f0e6d3;
+      --green: #91a858;
+      --green-dark: #7a9148;
+      --green-light: #a8bc6f;
+      --bark: #5c4a3a;
+      --bark-light: #8b7355;
+      --sunset: #e8985e;
+      --sunset-light: #f5d4b8;
+      --sky: #7fb5c7;
       --verified: #4caf50;
       
       --text: #3e3632;
       --text-light: #7a7168;
-      --border: #d9d1c5;
+      --border: #e0d6c8;
       --shadow: 0 2px 12px rgba(62, 54, 50, 0.08);
-      --shadow-hover: 0 4px 20px rgba(62, 54, 50, 0.12);
+      --shadow-hover: 0 6px 24px rgba(62, 54, 50, 0.12);
     }
     
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      margin: 0;
-      font-family: 'Georgia', 'Times New Roman', serif;
+      font-family: 'Nunito', sans-serif;
       background: var(--cream);
       color: var(--text);
       line-height: 1.6;
     }
     
+    /* ============ HERO ============ */
     .hero {
-      background: linear-gradient(to bottom, var(--mint-light), var(--sand));
-      padding: 48px 24px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      padding: 40px 24px;
       text-align: center;
-      border-bottom: 3px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      color: white;
     }
     
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -10%;
-      width: 120%;
-      height: 150%;
-      background-image: 
-        radial-gradient(circle at 20% 80%, rgba(200, 230, 201, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(168, 146, 128, 0.2) 0%, transparent 50%);
-      pointer-events: none;
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      color: #fffaed;
     }
     
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    h1 {
-      margin: 0 0 12px 0;
-      font-size: 42px;
-      font-weight: 400;
-      color: var(--brown-dark);
-      letter-spacing: -0.5px;
-    }
-    
-    .tagline {
+    .hero .tagline {
       font-size: 18px;
-      color: var(--text-light);
-      margin: 0 0 24px 0;
-      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 20px;
     }
     
     .stats {
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 40px;
       flex-wrap: wrap;
-      margin-top: 24px;
     }
     
     .stat {
@@ -113,175 +74,223 @@
     .stat-num {
       display: block;
       font-size: 32px;
-      font-weight: 700;
-      color: var(--forest-dark);
-      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 800;
     }
     
     .stat-label {
-      font-size: 13px;
-      color: var(--text-light);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-family: 'Helvetica Neue', sans-serif;
+      letter-spacing: 1px;
+      opacity: 0.8;
     }
     
+    /* ============ CONTAINER ============ */
     .container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 32px 24px;
+      padding: 24px;
     }
     
-    .controls {
+    /* ============ SEARCH SECTION ============ */
+    .search-section {
       background: white;
       border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
       box-shadow: var(--shadow);
-      padding: 32px;
-      margin-bottom: 32px;
       border: 1px solid var(--border);
     }
     
-    .search-section {
-      margin-bottom: 32px;
+    .search-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
     
-    .search-box {
-      position: relative;
+    .search-input-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
     }
     
-    .search-box input {
+    .search-input {
       width: 100%;
-      padding: 16px 24px;
-      border-radius: 12px;
+      padding: 14px 18px;
       border: 2px solid var(--border);
-      outline: none;
-      font-size: 16px;
-      background: var(--sand);
-      color: var(--text);
-      font-family: 'Helvetica Neue', sans-serif;
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
       transition: all 0.2s;
     }
     
-    .search-box input:focus {
-      border-color: var(--forest);
+    .search-input:focus {
+      outline: none;
+      border-color: var(--green);
       background: white;
     }
     
-    .search-box input::placeholder {
-      color: var(--text-light);
-    }
-    
-    .filter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 32px;
-    }
-    
-    .filter-group {
-      background: var(--sand);
-      padding: 20px;
-      border-radius: 12px;
+    /* ============ FILTERS ============ */
+    .filters-section {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
     
-    .filter-label {
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .filter-group h3 {
       font-size: 13px;
-      font-weight: 600;
-      color: var(--brown);
+      font-weight: 700;
+      color: var(--bark);
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      display: block;
-      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--cream-dark);
     }
     
-    .filter-options {
+    /* Pills */
+    .pills {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-height: 300px;
-      overflow-y: auto;
+      flex-wrap: wrap;
+      gap: 6px;
     }
     
-    .checkbox-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .pill {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
-      padding: 8px;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    
-    .checkbox-option:hover {
-      background: rgba(200, 230, 201, 0.2);
-    }
-    
-    .checkbox-option input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      accent-color: var(--forest);
-    }
-    
-    .checkbox-option label {
-      cursor: pointer;
-      font-size: 14px;
-      color: var(--text);
-      font-family: 'Helvetica Neue', sans-serif;
-    }
-    
-    .range-inputs {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 12px;
-      align-items: center;
-    }
-    
-    .range-inputs input {
-      padding: 10px;
-      border-radius: 8px;
+      transition: all 0.15s;
       border: 2px solid var(--border);
-      text-align: center;
-      font-size: 14px;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: white;
+      background: var(--cream);
       color: var(--text);
+      user-select: none;
     }
     
-    .range-inputs span {
-      color: var(--text-light);
+    .pill:hover {
+      border-color: var(--green-light);
+      background: white;
+    }
+    
+    .pill.active {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+    
+    /* Week pills - scrollable */
+    .weeks-container {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    
+    .week-pill {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: 2px solid var(--border);
+      background: var(--cream);
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    
+    .week-pill:hover {
+      border-color: var(--green-light);
+    }
+    
+    .week-pill.active {
+      background: var(--sunset);
+      color: white;
+      border-color: var(--sunset);
+    }
+    
+    .week-pill .week-num {
+      display: block;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    
+    .week-pill .week-dates {
+      font-size: 10px;
+      opacity: 0.8;
+    }
+    
+    /* Age inputs */
+    .age-inputs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .age-input {
+      width: 70px;
+      padding: 8px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
       font-size: 14px;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Nunito', sans-serif;
+      text-align: center;
+      background: var(--cream);
     }
     
+    .age-input:focus {
+      outline: none;
+      border-color: var(--green);
+      background: white;
+    }
+    
+    .age-separator {
+      font-weight: 600;
+      color: var(--text-light);
+      font-size: 13px;
+    }
+    
+    /* ============ ACTION BAR ============ */
     .action-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 2px solid var(--border);
+      gap: 12px;
+      margin-bottom: 24px;
     }
     
     .btn-group {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
     
     .btn {
-      padding: 12px 24px;
+      padding: 12px 20px;
       border-radius: 10px;
-      border: 2px solid var(--border);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
-      font-family: 'Helvetica Neue', sans-serif;
+      border: 2px solid var(--border);
+      font-family: 'Nunito', sans-serif;
       background: white;
       color: var(--text);
     }
@@ -292,77 +301,67 @@
     }
     
     .btn-primary {
-      background: var(--forest);
+      background: var(--green);
       color: white;
-      border-color: var(--forest);
+      border-color: var(--green);
     }
     
     .btn-primary:hover {
-      background: var(--forest-dark);
-      border-color: var(--forest-dark);
+      background: var(--green-dark);
     }
     
     .btn-secondary {
-      background: var(--gold-light);
-      color: var(--brown-dark);
-      border-color: var(--gold);
+      background: var(--sunset-light);
+      color: var(--bark);
+      border-color: var(--sunset);
     }
     
-    .view-toggle {
-      display: flex;
-      gap: 0;
-      border: 2px solid var(--border);
+    .fb-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: #1877f2;
+      color: white;
+      text-decoration: none;
       border-radius: 10px;
-      overflow: hidden;
-    }
-    
-    .view-btn {
-      padding: 10px 20px;
-      border: none;
-      background: white;
-      color: var(--text);
-      cursor: pointer;
+      font-weight: 700;
       font-size: 14px;
-      font-weight: 600;
-      font-family: 'Helvetica Neue', sans-serif;
       transition: all 0.2s;
     }
     
-    .view-btn:not(:last-child) {
-      border-right: 1px solid var(--border);
+    .fb-link:hover {
+      background: #0d65d9;
+      transform: translateY(-2px);
     }
     
-    .view-btn.active {
-      background: var(--forest);
-      color: white;
-    }
-    
+    /* ============ RESULTS ============ */
     .results-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
     
     .results-info {
       font-size: 18px;
-      font-weight: 600;
-      color: var(--brown-dark);
+      font-weight: 700;
+      color: var(--bark);
     }
     
     .results-meta {
       font-size: 13px;
       color: var(--text-light);
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
+    /* ============ CARDS ============ */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-      margin-bottom: 32px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
     }
     
     .camp-card {
@@ -372,61 +371,31 @@
       border: 2px solid var(--border);
       transition: all 0.2s;
       cursor: pointer;
-      position: relative;
     }
     
     .camp-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--forest);
-    }
-    
-    .camp-card.selected {
-      border-color: var(--gold);
-      background: var(--gold-light);
+      border-color: var(--green);
     }
     
     .card-header {
-      background: linear-gradient(135deg, var(--mint-light), var(--gold-light));
-      padding: 20px;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--sunset-light) 100%);
+      padding: 16px;
       position: relative;
     }
     
-    .favorite-btn {
+    .card-actions {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid var(--border);
-      cursor: pointer;
+      top: 12px;
+      right: 12px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.2s;
-      z-index: 10;
+      gap: 8px;
     }
     
-    .favorite-btn:hover {
-      background: var(--gold-light);
-      border-color: var(--gold);
-      transform: scale(1.1);
-    }
-    
-    .favorite-btn.active {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-    
-    .compare-checkbox {
-      position: absolute;
-      top: 60px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
+    .card-btn {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: white;
       border: 2px solid var(--border);
@@ -435,62 +404,55 @@
       align-items: center;
       justify-content: center;
       font-size: 14px;
-      font-weight: 700;
-      transition: all 0.2s;
-      z-index: 10;
-      font-family: 'Helvetica Neue', sans-serif;
+      transition: all 0.15s;
     }
     
-    .compare-checkbox:hover {
-      background: var(--mint-light);
-      border-color: var(--forest);
+    .card-btn:hover {
       transform: scale(1.1);
     }
     
-    .compare-checkbox.active {
-      background: var(--forest);
+    .card-btn.active {
+      background: var(--green);
+      border-color: var(--green);
       color: white;
-      border-color: var(--forest);
     }
     
     .verified-badge {
       position: absolute;
-      top: 16px;
-      right: 110px;
+      top: 12px;
+      left: 12px;
       background: var(--verified);
       color: white;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-size: 11px;
       font-weight: 700;
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
     .card-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--brown-dark);
-      margin: 0 120px 8px 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--bark);
+      margin: 0 80px 6px 0;
       line-height: 1.3;
     }
     
     .card-location {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-light);
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
     .card-body {
-      padding: 20px;
+      padding: 16px;
     }
     
     .camp-description {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.6;
+      margin-bottom: 12px;
+      line-height: 1.5;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -498,92 +460,60 @@
     .info-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 12px;
     }
     
     .info-item {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-light);
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
     .info-item strong {
       color: var(--text);
       display: block;
-      margin-bottom: 2px;
     }
     
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+      gap: 6px;
     }
     
     .tag {
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: 'Helvetica Neue', sans-serif;
-      border: 1px solid;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
     }
     
-    .tag.overnight {
-      background: var(--mint-light);
-      border-color: var(--mint);
-      color: var(--forest-dark);
-    }
-    
-    .tag.aftercare {
-      background: var(--gold-light);
-      border-color: var(--gold);
-      color: var(--brown-dark);
-    }
-    
-    .tag.scholarship {
-      background: var(--sand);
-      border-color: var(--brown-light);
-      color: var(--brown-dark);
-    }
-    
-    .tag.cit {
-      background: #e3f2fd;
-      border-color: #90caf9;
-      color: #1565c0;
-    }
-    
-    .tag.school-day {
-      background: #fff3e0;
-      border-color: #ffb74d;
-      color: #e65100;
-    }
+    .tag.day { background: var(--cream-dark); color: var(--bark); }
+    .tag.overnight { background: #e8f5e9; color: var(--green-dark); }
+    .tag.aftercare { background: var(--sunset-light); color: var(--bark); }
+    .tag.scholarship { background: #e3f2fd; color: #1565c0; }
+    .tag.cit { background: #f3e5f5; color: #7b1fa2; }
+    .tag.school-day { background: #fff3e0; color: #e65100; }
     
     .card-footer {
-      padding: 16px 20px;
-      background: var(--sand);
+      padding: 12px 16px;
+      background: var(--cream);
       border-top: 1px solid var(--border);
     }
     
     .reg-link {
+      display: inline-block;
       padding: 8px 16px;
       border-radius: 8px;
-      background: var(--forest);
+      background: var(--green);
       color: white;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 600;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: 700;
       transition: all 0.2s;
-      border: none;
-      display: inline-block;
-      text-align: center;
     }
     
     .reg-link:hover {
-      background: var(--forest-dark);
-      transform: translateY(-2px);
+      background: var(--green-dark);
     }
     
     .reg-link.disabled {
@@ -592,6 +522,7 @@
       cursor: not-allowed;
     }
     
+    /* ============ MODAL ============ */
     .modal {
       display: none;
       position: fixed;
@@ -614,84 +545,88 @@
     .modal-content {
       background: white;
       border-radius: 16px;
-      max-width: 900px;
+      max-width: 800px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      border: 3px solid var(--forest);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       position: relative;
     }
     
     .modal-header {
       padding: 24px;
-      background: linear-gradient(135deg, var(--mint-light), var(--gold-light));
+      background: linear-gradient(135deg, var(--cream) 0%, var(--sunset-light) 100%);
       border-bottom: 2px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    
-    .modal-title-section {
-      flex: 1;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     
     .modal-title {
-      margin: 0 0 8px 0;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--brown-dark);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--bark);
+      margin-right: 50px;
     }
     
     .modal-subtitle {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text-light);
-      font-family: 'Helvetica Neue', sans-serif;
+      margin-top: 4px;
     }
     
+    /* Floating close button */
     .close-btn {
-      background: none;
-      border: none;
-      font-size: 32px;
+      position: fixed;
+      top: 50%;
+      right: calc(50% - 420px);
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      border: 3px solid white;
+      font-size: 24px;
       cursor: pointer;
-      color: var(--text-light);
-      line-height: 1;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 1001;
+      transition: all 0.2s;
+    }
+    
+    .close-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-50%) scale(1.1);
     }
     
     .modal-body {
-      padding: 32px;
+      padding: 24px;
     }
     
     .detail-section {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
     
     .detail-section h3 {
-      margin: 0 0 16px 0;
-      font-size: 18px;
-      color: var(--brown);
-      font-weight: 600;
-      border-bottom: 2px solid var(--border);
+      font-size: 16px;
+      color: var(--bark);
+      margin-bottom: 12px;
       padding-bottom: 8px;
+      border-bottom: 2px solid var(--cream-dark);
     }
     
     .detail-grid {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 16px 24px;
-      margin-bottom: 16px;
+      grid-template-columns: 150px 1fr;
+      gap: 12px;
     }
     
     .detail-label {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-light);
-      font-size: 14px;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 13px;
     }
     
     .detail-value {
@@ -699,96 +634,36 @@
       color: var(--text);
     }
     
-    .detail-description {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    
     .modal-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 24px;
     }
     
-    .comparison-section {
-      background: white;
-      border-radius: 16px;
-      border: 2px solid var(--border);
-      box-shadow: var(--shadow);
-      margin-bottom: 32px;
-      overflow: hidden;
-    }
-    
-    .comparison-header {
-      background: var(--forest);
-      color: white;
-      padding: 20px 24px;
+    /* ============ SHARE MODAL ============ */
+    #shareModal .modal-body {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 12px;
     }
     
-    .comparison-header h2 {
-      margin: 0;
-      font-size: 24px;
+    #shareMessage {
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--green-dark);
       font-weight: 600;
+      text-align: center;
     }
     
-    .comparison-body {
-      padding: 24px;
-    }
-    
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    
-    .comparison-card {
-      background: var(--sand);
-      border-radius: 12px;
-      padding: 20px;
-      border: 2px solid var(--border);
-      position: relative;
-    }
-    
-    .comparison-card h4 {
-      margin: 0 40px 12px 0;
-      font-size: 18px;
-      color: var(--brown-dark);
-    }
-    
-    .remove-comparison {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid var(--border);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.2s;
-    }
-    
-    .remove-comparison:hover {
-      background: #ffebee;
-      border-color: #f44336;
-      color: #f44336;
-    }
-    
+    /* ============ PAGINATION ============ */
     .pagination {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 16px;
-      margin: 32px 0;
+      margin: 24px 0;
     }
     
     .pagination button {
@@ -800,14 +675,14 @@
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Nunito', sans-serif;
       transition: all 0.2s;
     }
     
     .pagination button:hover:not(:disabled) {
-      background: var(--forest);
+      background: var(--green);
       color: white;
-      border-color: var(--forest);
+      border-color: var(--green);
     }
     
     .pagination button:disabled {
@@ -818,176 +693,180 @@
     .pagination span {
       font-size: 14px;
       color: var(--text-light);
-      font-family: 'Helvetica Neue', sans-serif;
     }
     
+    /* ============ EMPTY STATE ============ */
     .empty-state {
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       color: var(--text-light);
     }
     
     .empty-state h3 {
-      font-size: 24px;
-      color: var(--brown-dark);
-      margin: 0 0 12px 0;
-      font-weight: 400;
+      font-size: 22px;
+      color: var(--bark);
+      margin-bottom: 8px;
     }
     
-    .empty-state p {
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--cream-dark);
+      border-top: 2px solid var(--border);
+      padding: 32px 24px;
+      margin-top: 48px;
+    }
+    
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .copyright-notice {
+      background: white;
+      border: 2px solid var(--green);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .copyright-notice h3 {
+      color: var(--bark);
       font-size: 16px;
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
+      margin-bottom: 8px;
+    }
+    
+    .copyright-notice p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+    
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .close-btn {
+        right: 20px;
+        top: 20px;
+        transform: none;
+        position: absolute;
+      }
     }
     
     @media (max-width: 768px) {
-      h1 { font-size: 32px; }
-      .filter-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 28px; }
+      .search-grid { grid-template-columns: 1fr; }
+      .filters-grid { grid-template-columns: 1fr 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
       .info-grid { grid-template-columns: 1fr; }
       .detail-grid { grid-template-columns: 1fr; }
-      .modal-title { font-size: 22px; }
-      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 480px) {
+      .filters-grid { grid-template-columns: 1fr; }
+      .action-bar { flex-direction: column; align-items: stretch; }
+      .btn-group { flex-direction: column; }
     }
   </style>
 </head>
 <body>
+
   <div class="hero">
-    <div class="hero-content">
-      <h1>Colorado Summer Camp Guide 2026</h1>
-      <p class="tagline">Find, compare, and save your perfect camps.</p>
-      <div class="stats">
-        <div class="stat">
-          <span class="stat-num" id="totalCamps">---</span>
-          <span class="stat-label">Total Camps</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" id="favCount">0</span>
-          <span class="stat-label">Favorites</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" id="resultsCount">---</span>
-          <span class="stat-label">Showing</span>
-        </div>
+    <h1>Colorado Summer Camp Options</h1>
+    <p class="tagline">Find, compare, and save your perfect camps</p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num" id="totalCamps">---</span>
+        <span class="stat-label">Total Camps</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="favCount">0</span>
+        <span class="stat-label">Favorites</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="resultsCount">---</span>
+        <span class="stat-label">Showing</span>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <div class="controls">
-      <div class="search-section">
-        <div class="search-box">
-          <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Search by camp name, location, activity, and more!"
-            autocomplete="off"
-          />
+    
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-grid">
+        <div class="search-input-group">
+          <label>Search Camps</label>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by camp name or activity type..." autocomplete="off">
         </div>
-      </div>
-
-      <div class="filter-grid">
-        <div class="filter-group">
-          <label class="filter-label">Summer Weeks</label>
-          <div class="filter-options" id="weekFilters">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label">Duration</label>
-          <div class="filter-options">
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-fullday" value="fullday" />
-              <label for="filter-fullday">Full Day</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-halfday" value="halfday" />
-              <label for="filter-halfday">Half Day</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-overnight" value="overnight" />
-              <label for="filter-overnight">Overnight / Sleepaway</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label">Setting</label>
-          <div class="filter-options">
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-indoor" value="indoor" />
-              <label for="filter-indoor">Indoor</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-outdoor" value="outdoor" />
-              <label for="filter-outdoor">Outdoor</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-both" value="both" />
-              <label for="filter-both">Both</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label">Features</label>
-          <div class="filter-options">
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-aftercare" value="aftercare" />
-              <label for="filter-aftercare">Aftercare Available</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-scholarship" value="scholarship" />
-              <label for="filter-scholarship">Scholarships Offered</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-cit" value="cit" />
-              <label for="filter-cit">CIT Program</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-schoolday" value="schoolday" />
-              <label for="filter-schoolday">School Day Off Camps</label>
-            </div>
-            <div class="checkbox-option">
-              <input type="checkbox" id="filter-verified" value="verified" />
-              <label for="filter-verified">Verified by Camp</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <label class="filter-label">Age Range</label>
-          <div class="range-inputs">
-            <input type="number" id="ageMin" placeholder="Min" min="3" max="18" />
-            <span>to</span>
-            <input type="number" id="ageMax" placeholder="Max" min="3" max="18" />
-          </div>
-        </div>
-      </div>
-
-      <div class="action-bar">
-        <div class="btn-group">
-          <button class="btn" id="clearFilters">Reset Filters</button>
-          <button class="btn btn-secondary" id="showFavorites">My Favorites (<span id="favBtnCount">0</span>)</button>
-          <button class="btn btn-primary" id="compareBtn" style="display: none;">Compare Selected (<span id="compareCount">0</span>)</button>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-primary" id="shareBtn">Share List</button>
+        <div class="search-input-group">
+          <label>Search by Location</label>
+          <input type="text" id="locationInput" class="search-input" placeholder="City name (Boulder, Denver...)" autocomplete="off">
         </div>
       </div>
     </div>
 
-    <div id="comparisonSection" class="comparison-section" style="display: none;">
-      <div class="comparison-header">
-        <h2>Comparing <span id="comparisonCountHeader">0</span> Camps</h2>
-        <button class="btn" onclick="clearComparison()" style="background: white; color: var(--forest-dark);">Clear All</button>
-      </div>
-      <div class="comparison-body">
-        <div class="comparison-grid" id="comparisonGrid"></div>
+    <!-- Filters Section -->
+    <div class="filters-section">
+      <div class="filters-grid">
+        
+        <!-- Scheduling - Weeks, Duration, Setting combined -->
+        <div class="filter-group" style="grid-column: span 2;">
+          <h3>Scheduling</h3>
+          <div class="weeks-container" id="weekFilters" style="margin-bottom: 12px;"></div>
+          <div class="pills">
+            <span class="pill" data-filter="duration" data-value="fullday">Full Day</span>
+            <span class="pill" data-filter="duration" data-value="halfday">Half Day</span>
+            <span class="pill" data-filter="duration" data-value="overnight">Overnight</span>
+            <span class="pill" data-filter="setting" data-value="indoor">Indoor</span>
+            <span class="pill" data-filter="setting" data-value="outdoor">Outdoor</span>
+            <span class="pill" data-filter="setting" data-value="both">Both</span>
+          </div>
+        </div>
+        
+        <!-- Details - all the Y/N features -->
+        <div class="filter-group">
+          <h3>Details</h3>
+          <div class="pills">
+            <span class="pill" data-filter="features" data-value="aftercare">Aftercare</span>
+            <span class="pill" data-filter="features" data-value="scholarship">Scholarships</span>
+            <span class="pill" data-filter="features" data-value="cit">CIT Program</span>
+            <span class="pill" data-filter="features" data-value="verified">Verified by Camp</span>
+            <span class="pill" data-filter="features" data-value="licensed">Licensed</span>
+            <span class="pill" data-filter="features" data-value="schoolday">School Day Off</span>
+          </div>
+        </div>
+        
+        <!-- Age Range -->
+        <div class="filter-group">
+          <h3>Age Range</h3>
+          <div class="age-inputs">
+            <input type="number" id="ageMin" class="age-input" placeholder="Min" min="3" max="18">
+            <span class="age-separator">to</span>
+            <input type="number" id="ageMax" class="age-input" placeholder="Max" min="3" max="18">
+          </div>
+        </div>
+        
       </div>
     </div>
 
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <div class="btn-group">
+        <button class="btn" id="clearFilters">Reset Filters</button>
+        <button class="btn btn-secondary" id="showFavorites">My Favorites (<span id="favBtnCount">0</span>)</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="shareBtn">Share List</button>
+        <a href="https://www.facebook.com/share/g/17xpWxA8Z9/" target="_blank" class="fb-link">Join Our Facebook Group</a>
+      </div>
+    </div>
+
+    <!-- Results -->
     <div class="results-header">
       <div class="results-info" id="resultsText">Loading camps...</div>
       <div class="results-meta">Last updated: <span id="lastUpdated">---</span></div>
@@ -996,25 +875,19 @@
     <div id="cardsView" class="cards-grid"></div>
     
     <div class="pagination" id="pagination" style="display: none;">
-      <button id="prevPage">Previous</button>
+      <button id="prevPage">← Previous</button>
       <span id="pageInfo">Page 1 of 1</span>
-      <button id="nextPage">Next</button>
+      <button id="nextPage">Next →</button>
     </div>
   </div>
 
-  <footer style="background: var(--sand); border-top: 2px solid var(--border); padding: 32px 24px; margin-top: 48px;">
-    <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
-      <div style="background: white; border: 2px solid var(--forest); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-        <h3 style="margin: 0 0 12px 0; color: var(--brown-dark); font-size: 18px;">⚠️ Copyright & Usage Notice</h3>
-        <p style="margin: 0; font-size: 14px; line-height: 1.8; color: var(--text); font-family: 'Helvetica Neue', sans-serif;">
-          This Colorado Summer Camp resource is provided strictly for <strong>personal, non-commercial use</strong> by parents and caregivers. 
-          Any scraping, redistribution, or commercial use of this data is <strong>strictly prohibited</strong> without express written consent. 
-          This database is protected under copyright law.
-        </p>
+  <footer>
+    <div class="footer-content">
+      <div class="copyright-notice">
+        <h3>⚠️ Copyright & Usage Notice</h3>
+        <p>This Colorado Summer Camp resource is provided strictly for <strong>personal, non-commercial use</strong> by parents and caregivers. Any scraping, redistribution, or commercial use of this data is <strong>strictly prohibited</strong> without express written consent.</p>
       </div>
-      <p style="margin: 0; font-size: 13px; color: var(--text-light); font-family: 'Helvetica Neue', sans-serif;">
-        © 2026 Colorado Summer Camp Guide. All rights reserved. Data is subject to change.
-      </p>
+      <p class="footer-text">© 2026 Colorado Summer Camp Options. All rights reserved. Data is subject to change.</p>
     </div>
   </footer>
 
@@ -1022,748 +895,720 @@
   <div class="modal" id="campModal">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title-section" id="modalTitleSection"></div>
-        <button class="close-btn" onclick="closeCampModal()">×</button>
+        <div id="modalTitleSection"></div>
       </div>
       <div class="modal-body" id="modalBody"></div>
     </div>
+    <button class="close-btn" onclick="closeCampModal()">×</button>
   </div>
 
   <!-- Share Modal -->
   <div class="modal" id="shareModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Share Your List</h2>
-        <button class="close-btn" onclick="closeShareModal()">×</button>
+        <div class="modal-title">Share Your List</div>
       </div>
       <div class="modal-body">
-        <div style="display: grid; gap: 12px;">
-          <button class="btn btn-primary" onclick="emailList()">
-            Email myself this list
-          </button>
-          <button class="btn btn-primary" onclick="copyShareLink()">
-            Copy shareable link
-          </button>
-          <button class="btn btn-primary" onclick="downloadCSV()">
-            Download as spreadsheet
-          </button>
-        </div>
-        <div id="shareMessage" style="margin-top: 16px; padding: 12px; border-radius: 8px; background: var(--mint-light); color: var(--forest-dark); font-weight: 600; display: none;"></div>
+        <button class="btn btn-primary" onclick="emailList()" style="width: 100%;">📧 Email myself this list</button>
+        <button class="btn btn-primary" onclick="copyShareLink()" style="width: 100%;">🔗 Copy shareable link</button>
+        <div id="shareMessage" style="display: none;"></div>
       </div>
     </div>
+    <button class="close-btn" onclick="closeShareModal()">×</button>
   </div>
 
-  <script>
-    // UPDATE THIS LINE WITH YOUR APPS SCRIPT URL:
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwxRiD40cOmWXRyW0EJXRKrtEU_cfqEIrQ8kV9OYye6P-2j7ZRz9eb0tmy-v7ytoifw/exec';
-    const RESULTS_PER_PAGE = 50;
-    
-    // Standard summer 2026 weeks
-    const SUMMER_WEEKS = [
-      { label: 'Week 1: May 25-29 (Memorial Day)', start: new Date('2026-05-25'), end: new Date('2026-05-29') },
-      { label: 'Week 2: Jun 1-5', start: new Date('2026-06-01'), end: new Date('2026-06-05') },
-      { label: 'Week 3: Jun 8-12', start: new Date('2026-06-08'), end: new Date('2026-06-12') },
-      { label: 'Week 4: Jun 15-19', start: new Date('2026-06-15'), end: new Date('2026-06-19') },
-      { label: 'Week 5: Jun 22-26', start: new Date('2026-06-22'), end: new Date('2026-06-26') },
-      { label: 'Week 6: Jun 29-Jul 3 (July 4th)', start: new Date('2026-06-29'), end: new Date('2026-07-03') },
-      { label: 'Week 7: Jul 6-10', start: new Date('2026-07-06'), end: new Date('2026-07-10') },
-      { label: 'Week 8: Jul 13-17', start: new Date('2026-07-13'), end: new Date('2026-07-17') },
-      { label: 'Week 9: Jul 20-24', start: new Date('2026-07-20'), end: new Date('2026-07-24') },
-      { label: 'Week 10: Jul 27-31', start: new Date('2026-07-27'), end: new Date('2026-07-31') },
-      { label: 'Week 11: Aug 3-7', start: new Date('2026-08-03'), end: new Date('2026-08-07') },
-      { label: 'Week 12: Aug 10-14', start: new Date('2026-08-10'), end: new Date('2026-08-14') },
-      { label: 'Week 13: Aug 17-21', start: new Date('2026-08-17'), end: new Date('2026-08-21') }
-    ];
-    
-    let allCamps = [];
-    let filteredCamps = [];
-    let currentPage = 1;
-    let favorites = new Set(JSON.parse(localStorage.getItem('campFavorites') || '[]'));
-    let comparisonList = new Set(JSON.parse(localStorage.getItem('campComparison') || '[]'));
-    let isInitialLoad = true;
-    let filters = {
-      search: '',
-      weeks: new Set(),
-      duration: new Set(),
-      setting: new Set(),
-      features: new Set(),
-      ageMin: null,
-      ageMax: null,
-      favoritesOnly: false
-    };
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbwxRiD40cOmWXRyW0EJXRKrtEU_cfqEIrQ8kV9OYye6P-2j7ZRz9eb0tmy-v7ytoifw/exec';
+const RESULTS_PER_PAGE = 50;
 
-    // Add copy protection
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add copyright notice to clipboard when copying
-      document.addEventListener('copy', function(e) {
-        const selection = document.getSelection().toString();
-        if (selection.length > 50) {
-          const notice = '\n\n---\nSource: Colorado Summer Camp Guide 2026\nFor personal use only. Redistribution prohibited.\n© 2026 All rights reserved.';
-          e.clipboardData.setData('text/plain', selection + notice);
-          e.preventDefault();
-        }
-      });
-    });
+// Summer weeks - easy to update annually
+const SUMMER_WEEKS = [
+  { label: 'Week 1', dates: 'May 25-29', start: new Date('2026-05-25'), end: new Date('2026-05-29'), note: 'Memorial Day' },
+  { label: 'Week 2', dates: 'Jun 1-5', start: new Date('2026-06-01'), end: new Date('2026-06-05') },
+  { label: 'Week 3', dates: 'Jun 8-12', start: new Date('2026-06-08'), end: new Date('2026-06-12') },
+  { label: 'Week 4', dates: 'Jun 15-19', start: new Date('2026-06-15'), end: new Date('2026-06-19') },
+  { label: 'Week 5', dates: 'Jun 22-26', start: new Date('2026-06-22'), end: new Date('2026-06-26') },
+  { label: 'Week 6', dates: 'Jun 29-Jul 3', start: new Date('2026-06-29'), end: new Date('2026-07-03'), note: 'July 4th' },
+  { label: 'Week 7', dates: 'Jul 6-10', start: new Date('2026-07-06'), end: new Date('2026-07-10') },
+  { label: 'Week 8', dates: 'Jul 13-17', start: new Date('2026-07-13'), end: new Date('2026-07-17') },
+  { label: 'Week 9', dates: 'Jul 20-24', start: new Date('2026-07-20'), end: new Date('2026-07-24') },
+  { label: 'Week 10', dates: 'Jul 27-31', start: new Date('2026-07-27'), end: new Date('2026-07-31') },
+  { label: 'Week 11', dates: 'Aug 3-7', start: new Date('2026-08-03'), end: new Date('2026-08-07') },
+  { label: 'Week 12', dates: 'Aug 10-14', start: new Date('2026-08-10'), end: new Date('2026-08-14') },
+  { label: 'Week 13', dates: 'Aug 17-21', start: new Date('2026-08-17'), end: new Date('2026-08-21') }
+];
 
-    // Load camps
-    async function loadCamps() {
-      try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
-        
-        if (!data.success) throw new Error(data.message);
-        
-        allCamps = data.camps;
-        document.getElementById('totalCamps').textContent = allCamps.length.toLocaleString();
-        document.getElementById('lastUpdated').textContent = new Date(data.lastUpdated).toLocaleDateString();
-        
-        setupWeekFilters();
-        applyFilters();
-        setupEventListeners();
-        updateComparisonDisplay();
-        
-      } catch (error) {
-        document.getElementById('cardsView').innerHTML = `
-          <div class="empty-state">
-            <h3>Unable to load camps</h3>
-            <p>${error.message}</p>
-            <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
-          </div>
-        `;
+let allCamps = [];
+let filteredCamps = [];
+let allLocations = new Set();
+let currentPage = 1;
+let favorites = new Set(JSON.parse(localStorage.getItem('campFavorites') || '[]'));
+let isInitialLoad = true;
+
+let filters = {
+  search: '',
+  location: '',
+  weeks: new Set(),
+  duration: new Set(),
+  setting: new Set(),
+  features: new Set(),
+  ageMin: null,
+  ageMax: null,
+  favoritesOnly: false
+};
+
+// ============ UTILITY FUNCTIONS ============
+
+// Check if value means "yes" (Y, Yes, yes, YES, etc.)
+function isYes(val) {
+  return val && (val.toString().toUpperCase() === 'Y' || val.toString().toUpperCase() === 'YES');
+}
+
+// Normalize text for fuzzy matching - removes punctuation, extra spaces, lowercases
+function normalize(str) {
+  return (str || '')
+    .toLowerCase()
+    .replace(/[''`",.!?-]/g, '')  // Remove punctuation
+    .replace(/\s+/g, ' ')          // Collapse whitespace
+    .trim();
+}
+
+// Check if search term matches text (fuzzy)
+function fuzzyMatch(searchTerm, text) {
+  const normalizedSearch = normalize(searchTerm);
+  const normalizedText = normalize(text);
+  
+  // Direct include
+  if (normalizedText.includes(normalizedSearch)) return true;
+  
+  // Check each word in search against text
+  const searchWords = normalizedSearch.split(' ');
+  return searchWords.every(word => normalizedText.includes(word));
+}
+
+// Escape HTML
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+// Format date range
+function formatDateRange(start, end) {
+  if (!start || !end) return 'TBD';
+  try {
+    const s = new Date(start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const e = new Date(end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return `${s} - ${e}`;
+  } catch (e) {
+    return 'TBD';
+  }
+}
+
+// Ensure URL has protocol
+function ensureUrl(url) {
+  if (!url) return '';
+  url = url.trim();
+  if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+    return 'https://' + url;
+  }
+  return url;
+}
+
+// Shuffle array (Fisher-Yates)
+function shuffleArray(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// ============ LOAD DATA ============
+
+async function loadCamps() {
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    
+    if (!data.success) throw new Error(data.message);
+    
+    allCamps = data.camps;
+    
+    // Extract all unique locations
+    allCamps.forEach(camp => {
+      if (camp.location) {
+        allLocations.add(camp.location.trim());
       }
-    }
+    });
+    
+    document.getElementById('totalCamps').textContent = allCamps.length.toLocaleString();
+    document.getElementById('lastUpdated').textContent = new Date(data.lastUpdated).toLocaleDateString();
+    
+    setupWeekFilters();
+    setupEventListeners();
+    applyFilters();
+    
+  } catch (error) {
+    document.getElementById('cardsView').innerHTML = `
+      <div class="empty-state">
+        <h3>Unable to load camps</h3>
+        <p>${error.message}</p>
+        <button class="btn btn-primary" onclick="location.reload()">Try Again</button>
+      </div>
+    `;
+  }
+}
 
-    // Setup standardized summer week filters
-    function setupWeekFilters() {
-      const container = document.getElementById('weekFilters');
-      
-      container.innerHTML = SUMMER_WEEKS.map((week, index) => `
-        <div class="checkbox-option">
-          <input type="checkbox" id="week-${index}" value="${index}" onchange="toggleWeekFilter(${index})" />
-          <label for="week-${index}">${week.label}</label>
-        </div>
-      `).join('');
-    }
+// ============ SETUP ============
 
-    function toggleWeekFilter(weekIndex) {
+function setupWeekFilters() {
+  const container = document.getElementById('weekFilters');
+  container.innerHTML = SUMMER_WEEKS.map((week, i) => `
+    <div class="week-pill" data-week="${i}">
+      <span class="week-num">${week.label}</span>
+      <span class="week-dates">${week.dates}</span>
+    </div>
+  `).join('');
+  
+  // Add click handlers
+  container.querySelectorAll('.week-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const weekIndex = parseInt(pill.dataset.week);
+      pill.classList.toggle('active');
       if (filters.weeks.has(weekIndex)) {
         filters.weeks.delete(weekIndex);
       } else {
         filters.weeks.add(weekIndex);
       }
       applyFilters();
+    });
+  });
+}
+
+function setupEventListeners() {
+  // Search inputs
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    filters.search = e.target.value;
+    isInitialLoad = false;
+    applyFilters();
+  });
+  
+  document.getElementById('locationInput').addEventListener('input', (e) => {
+    filters.location = e.target.value;
+    isInitialLoad = false;
+    applyFilters();
+  });
+  
+  // Age inputs
+  document.getElementById('ageMin').addEventListener('input', (e) => {
+    filters.ageMin = e.target.value ? parseInt(e.target.value) : null;
+    isInitialLoad = false;
+    applyFilters();
+  });
+  
+  document.getElementById('ageMax').addEventListener('input', (e) => {
+    filters.ageMax = e.target.value ? parseInt(e.target.value) : null;
+    isInitialLoad = false;
+    applyFilters();
+  });
+  
+  // Pill filters
+  document.querySelectorAll('.pill[data-filter]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const filterType = pill.dataset.filter;
+      const value = pill.dataset.value;
+      
+      pill.classList.toggle('active');
+      
+      if (filterType === 'duration') {
+        if (filters.duration.has(value)) {
+          filters.duration.delete(value);
+        } else {
+          filters.duration.add(value);
+        }
+      } else if (filterType === 'setting') {
+        if (filters.setting.has(value)) {
+          filters.setting.delete(value);
+        } else {
+          filters.setting.add(value);
+        }
+      } else if (filterType === 'features') {
+        if (filters.features.has(value)) {
+          filters.features.delete(value);
+        } else {
+          filters.features.add(value);
+        }
+      }
+      
+      isInitialLoad = false;
+      applyFilters();
+    });
+  });
+  
+  // Buttons
+  document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
+  document.getElementById('showFavorites').addEventListener('click', toggleFavoritesView);
+  document.getElementById('shareBtn').addEventListener('click', () => {
+    document.getElementById('shareModal').classList.add('active');
+  });
+  
+  // Pagination
+  document.getElementById('prevPage').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderCards();
+      renderPagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+  
+  document.getElementById('nextPage').addEventListener('click', () => {
+    const totalPages = Math.ceil(filteredCamps.length / RESULTS_PER_PAGE);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderCards();
+      renderPagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
+
+// ============ FILTERING ============
+
+function applyFilters() {
+  // Check if any filters are active
+  const hasActiveFilters = filters.search || filters.location || 
+    filters.weeks.size > 0 || filters.duration.size > 0 || 
+    filters.setting.size > 0 || filters.features.size > 0 || 
+    filters.ageMin || filters.ageMax || filters.favoritesOnly;
+  
+  // Initial load with no filters - show random sample
+  if (isInitialLoad && !hasActiveFilters) {
+    const sampleSize = Math.floor(Math.random() * 8) + 5;
+    filteredCamps = shuffleArray(allCamps).slice(0, sampleSize);
+    currentPage = 1;
+    updateStats();
+    renderCards();
+    renderPagination();
+    document.getElementById('resultsText').textContent = `Showing ${sampleSize} featured camps`;
+    return;
+  }
+  
+  // Score and filter camps
+  let scoredCamps = allCamps.map(camp => {
+    let score = 0;
+    let passes = true;
+    
+    // === SEARCH (fuzzy matching, prioritize name) ===
+    if (filters.search) {
+      const searchTerm = filters.search;
+      const nameMatch = fuzzyMatch(searchTerm, camp.campName);
+      const descMatch = fuzzyMatch(searchTerm, camp.campDescription);
+      const locationMatch = fuzzyMatch(searchTerm, camp.location);
+      
+      if (nameMatch) {
+        score += 100; // High priority for name matches
+        // Extra points if name starts with search term
+        if (normalize(camp.campName).startsWith(normalize(searchTerm))) {
+          score += 50;
+        }
+      } else if (locationMatch) {
+        score += 30;
+      } else if (descMatch) {
+        score += 10;
+      } else {
+        passes = false;
+      }
     }
     
-    // Check if camp overlaps with a selected week
-    function campMatchesWeek(camp, weekIndex) {
-      if (!camp.startDate2026 || !camp.endDate2026) return false;
-      
-      try {
-        const campStart = new Date(camp.startDate2026);
-        const campEnd = new Date(camp.endDate2026);
-        const week = SUMMER_WEEKS[weekIndex];
-        
-        // Camp matches if it overlaps with the week
-        return (campStart <= week.end && campEnd >= week.start);
-      } catch (e) {
-        return false;
+    // === LOCATION FILTER (separate input, strict match) ===
+    if (filters.location) {
+      if (!fuzzyMatch(filters.location, camp.location)) {
+        passes = false;
+      } else {
+        score += 20;
       }
     }
-
-    // Setup event listeners
-    function setupEventListeners() {
-      document.getElementById('searchInput').addEventListener('input', (e) => {
-        filters.search = e.target.value;
-        applyFilters();
-      });
-
-      document.getElementById('ageMin').addEventListener('input', (e) => {
-        filters.ageMin = e.target.value ? parseInt(e.target.value) : null;
-        applyFilters();
-      });
-
-      document.getElementById('ageMax').addEventListener('input', (e) => {
-        filters.ageMax = e.target.value ? parseInt(e.target.value) : null;
-        applyFilters();
-      });
-
-      // Duration filters
-      ['fullday', 'halfday', 'overnight'].forEach(type => {
-        document.getElementById(`filter-${type}`).addEventListener('change', (e) => {
-          if (e.target.checked) {
-            filters.duration.add(type);
-          } else {
-            filters.duration.delete(type);
-          }
-          applyFilters();
-        });
-      });
-
-      // Setting filters
-      ['indoor', 'outdoor', 'both'].forEach(type => {
-        document.getElementById(`filter-${type}`).addEventListener('change', (e) => {
-          if (e.target.checked) {
-            filters.setting.add(type);
-          } else {
-            filters.setting.delete(type);
-          }
-          applyFilters();
-        });
-      });
-
-      // Feature filters
-      ['aftercare', 'scholarship', 'cit', 'schoolday', 'verified'].forEach(type => {
-        document.getElementById(`filter-${type}`).addEventListener('change', (e) => {
-          if (e.target.checked) {
-            filters.features.add(type);
-          } else {
-            filters.features.delete(type);
-          }
-          applyFilters();
-        });
-      });
-
-      document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
-      document.getElementById('showFavorites').addEventListener('click', toggleFavoritesView);
-      document.getElementById('compareBtn').addEventListener('click', scrollToComparison);
-      document.getElementById('shareBtn').addEventListener('click', () => {
-        document.getElementById('shareModal').classList.add('active');
-      });
-
-      document.getElementById('prevPage').addEventListener('click', () => {
-        if (currentPage > 1) {
-          currentPage--;
-          renderCards();
-          renderPagination();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-
-      document.getElementById('nextPage').addEventListener('click', () => {
-        const totalPages = Math.ceil(filteredCamps.length / RESULTS_PER_PAGE);
-        if (currentPage < totalPages) {
-          currentPage++;
-          renderCards();
-          renderPagination();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    }
-
-    // Apply all filters
-    function applyFilters() {
-      // On initial load with no filters, show random sample
-      if (isInitialLoad && filters.search === '' && filters.weeks.size === 0 && 
-          filters.duration.size === 0 && filters.setting.size === 0 && 
-          filters.features.size === 0 && !filters.ageMin && !filters.ageMax && 
-          !filters.favoritesOnly) {
-        
-        // Show 5-12 random camps
-        const sampleSize = Math.floor(Math.random() * 8) + 5; // Random between 5-12
-        const shuffled = [...allCamps].sort(() => Math.random() - 0.5);
-        filteredCamps = shuffled.slice(0, sampleSize);
-        
-        currentPage = 1;
-        updateStats();
-        renderCards();
-        renderPagination();
-        
-        document.getElementById('resultsText').textContent = `Showing ${sampleSize} featured camps (refreshes on reload)`;
-        return;
-      }
-      
-      // Mark that we're no longer on initial load once any filter is used
-      isInitialLoad = false;
-      
-      filteredCamps = allCamps.filter(camp => {
-        // Search
-        if (filters.search) {
-          const q = filters.search.toLowerCase();
-          if (!camp.campName.toLowerCase().includes(q) &&
-              !camp.location.toLowerCase().includes(q) &&
-              !(camp.campDescription || '').toLowerCase().includes(q)) {
-            return false;
-          }
-        }
-        
-        // Weeks - check if camp overlaps with ANY selected week
-        if (filters.weeks.size > 0) {
-          let matchesAnyWeek = false;
+    
+    // === WEEKS ===
+    if (filters.weeks.size > 0) {
+      let matchesAnyWeek = false;
+      if (camp.startDate2026 && camp.endDate2026) {
+        try {
+          const campStart = new Date(camp.startDate2026);
+          const campEnd = new Date(camp.endDate2026);
           filters.weeks.forEach(weekIndex => {
-            if (campMatchesWeek(camp, weekIndex)) {
+            const week = SUMMER_WEEKS[weekIndex];
+            if (campStart <= week.end && campEnd >= week.start) {
               matchesAnyWeek = true;
             }
           });
-          if (!matchesAnyWeek) return false;
-        }
-        
-        // Age range
-        if (filters.ageMin) {
-          const minAge = parseInt(camp.ageMin) || 0;
-          if (minAge > filters.ageMin) return false;
-        }
-        if (filters.ageMax) {
-          const maxAge = parseInt(camp.ageMax) || 99;
-          if (maxAge < filters.ageMax) return false;
-        }
-        
-        // Duration - improved logic
-        if (filters.duration.size > 0) {
-          const duration = (camp.duration || '').toLowerCase();
-          let matches = false;
-          
-          if (filters.duration.has('overnight') && (duration.includes('overnight') || duration.includes('sleepaway'))) {
-            matches = true;
-          }
-          if (filters.duration.has('fullday') && (duration.includes('full') || duration.includes('day') && !duration.includes('half'))) {
-            matches = true;
-          }
-          if (filters.duration.has('halfday') && duration.includes('half')) {
-            matches = true;
-          }
-          
-          if (!matches) return false;
-        }
-        
-        // Setting
-        if (filters.setting.size > 0) {
-          const setting = (camp.indoorOutdoor || '').toLowerCase();
-          let matches = false;
-          if (filters.setting.has('indoor') && setting.includes('indoor')) matches = true;
-          if (filters.setting.has('outdoor') && setting.includes('outdoor')) matches = true;
-          if (filters.setting.has('both') && setting.includes('both')) matches = true;
-          if (!matches) return false;
-        }
-        
-        // Features
-        if (filters.features.has('aftercare') && camp.aftercareAvailable !== 'Y') return false;
-        if (filters.features.has('scholarship') && camp.scholarshipsOffered !== 'Y') return false;
-        if (filters.features.has('cit') && camp.citProgram !== 'Y') return false;
-        if (filters.features.has('schoolday') && camp.schoolDayOffCamps !== 'Y') return false;
-        if (filters.features.has('verified') && camp.verified !== 'Y' && camp.verified !== 'Yes') return false;
-        
-        // Favorites only
-        if (filters.favoritesOnly && !favorites.has(camp.campName)) return false;
-        
-        return true;
-      });
-      
-      currentPage = 1;
-      updateStats();
-      renderCards();
-      renderPagination();
-    }
-
-    // Update stats
-    function updateStats() {
-      document.getElementById('resultsCount').textContent = filteredCamps.length.toLocaleString();
-      document.getElementById('resultsText').textContent = 
-        filters.favoritesOnly ? 
-        `${filteredCamps.length} favorite camp${filteredCamps.length !== 1 ? 's' : ''}` :
-        `${filteredCamps.length} camp${filteredCamps.length !== 1 ? 's' : ''} found`;
-    }
-
-    // Render cards
-    function renderCards() {
-      const container = document.getElementById('cardsView');
-      
-      if (filteredCamps.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <h3>No camps match your filters</h3>
-            <p>Try adjusting your search or filter criteria above</p>
-          </div>
-        `;
-        return;
+        } catch (e) {}
       }
-      
-      const start = (currentPage - 1) * RESULTS_PER_PAGE;
-      const end = start + RESULTS_PER_PAGE;
-      const pageCamps = filteredCamps.slice(start, end);
-      
-      container.innerHTML = pageCamps.map((camp, index) => {
-        const globalIndex = start + index;
-        const isFav = favorites.has(camp.campName);
-        const isComparing = comparisonList.has(camp.campName);
-        const isOvernight = (camp.duration || '').toLowerCase().includes('overnight') || (camp.duration || '').toLowerCase().includes('sleepaway');
-        const hasAftercare = camp.aftercareAvailable === 'Y';
-        const hasScholarship = camp.scholarshipsOffered === 'Y';
-        const hasCIT = camp.citProgram === 'Y';
-        const hasSchoolDayOff = camp.schoolDayOffCamps === 'Y';
-        const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
-        const regLink = (camp.registrationLink || '').trim();
-        const setting = camp.indoorOutdoor || 'Not specified';
-        
-        return `
-          <div class="camp-card ${isComparing ? 'selected' : ''}" onclick="openCampModal(${globalIndex})">
-            <div class="card-header">
-              <button class="favorite-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}')">
-                ${isFav ? '★' : '☆'}
-              </button>
-              <button class="compare-checkbox ${isComparing ? 'active' : ''}" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}')">
-                ${isComparing ? '✓' : '+'}
-              </button>
-              ${isVerified ? '<div class="verified-badge">✓ Verified</div>' : ''}
-              <div class="card-title">${escapeHtml(camp.campName)}</div>
-              <div class="card-location">${escapeHtml(camp.location)}</div>
-            </div>
-            <div class="card-body">
-              ${camp.campDescription ? `
-                <div class="camp-description">${escapeHtml(camp.campDescription)}</div>
-              ` : ''}
-              
-              <div class="info-grid">
-                <div class="info-item">
-                  <strong>Ages</strong>
-                  ${camp.ageMin}-${camp.ageMax}
-                </div>
-                <div class="info-item">
-                  <strong>Dates</strong>
-                  ${formatDateRange(camp.startDate2026, camp.endDate2026)}
-                </div>
-                <div class="info-item">
-                  <strong>Cost</strong>
-                  ${escapeHtml(camp.costRange || 'Contact')}
-                </div>
-                <div class="info-item">
-                  <strong>Hours</strong>
-                  ${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}
-                </div>
-                <div class="info-item">
-                  <strong>Setting</strong>
-                  ${setting}
-                </div>
-                ${camp.enrollmentOpenDate ? `
-                  <div class="info-item">
-                    <strong>Registration Opens</strong>
-                    ${camp.enrollmentOpenDate}
-                  </div>
-                ` : ''}
-              </div>
-              
-              <div class="tags">
-                <span class="tag overnight">${isOvernight ? 'Overnight' : 'Day Camp'}</span>
-                ${hasAftercare ? '<span class="tag aftercare">Aftercare</span>' : ''}
-                ${hasScholarship ? '<span class="tag scholarship">Scholarships</span>' : ''}
-                ${hasCIT ? '<span class="tag cit">CIT Program</span>' : ''}
-                ${hasSchoolDayOff ? '<span class="tag school-day">School Day Off</span>' : ''}
-              </div>
-            </div>
-            <div class="card-footer">
-              ${regLink ? 
-                `<a href="${regLink}" target="_blank" class="reg-link" onclick="event.stopPropagation()">Register Now</a>` : 
-                '<span class="reg-link disabled">Registration TBD</span>'
-              }
-            </div>
+      if (!matchesAnyWeek) passes = false;
+    }
+    
+    // === AGE RANGE ===
+    if (filters.ageMin) {
+      const campMin = parseInt(camp.ageMin) || 0;
+      const campMax = parseInt(camp.ageMax) || 99;
+      if (campMax < filters.ageMin) passes = false;
+    }
+    if (filters.ageMax) {
+      const campMin = parseInt(camp.ageMin) || 0;
+      if (campMin > filters.ageMax) passes = false;
+    }
+    
+    // === DURATION ===
+    if (filters.duration.size > 0) {
+      const duration = (camp.duration || '').toLowerCase();
+      let matches = false;
+      if (filters.duration.has('overnight') && (duration.includes('overnight') || duration.includes('sleepaway'))) matches = true;
+      if (filters.duration.has('fullday') && duration.includes('full')) matches = true;
+      if (filters.duration.has('halfday') && duration.includes('half')) matches = true;
+      if (!matches) passes = false;
+    }
+    
+    // === SETTING ===
+    if (filters.setting.size > 0) {
+      const setting = (camp.indoorOutdoor || '').toLowerCase();
+      let matches = false;
+      if (filters.setting.has('indoor') && setting.includes('indoor')) matches = true;
+      if (filters.setting.has('outdoor') && setting.includes('outdoor')) matches = true;
+      if (filters.setting.has('both') && setting.includes('both')) matches = true;
+      if (!matches) passes = false;
+    }
+    
+    // === FEATURES ===
+    if (filters.features.has('aftercare') && !isYes(camp.aftercareAvailable)) passes = false;
+    if (filters.features.has('scholarship') && !isYes(camp.scholarshipsOffered)) passes = false;
+    if (filters.features.has('cit') && !isYes(camp.citProgram)) passes = false;
+    if (filters.features.has('schoolday') && !isYes(camp.schoolDayOffCamps)) passes = false;
+    if (filters.features.has('verified') && !isYes(camp.verified)) passes = false;
+    if (filters.features.has('licensed') && !isYes(camp.licensed)) passes = false;
+    
+    // === FAVORITES ===
+    if (filters.favoritesOnly && !favorites.has(camp.campName)) passes = false;
+    
+    return { camp, score, passes };
+  });
+  
+  // Filter and sort
+  filteredCamps = scoredCamps
+    .filter(item => item.passes)
+    .sort((a, b) => {
+      // Sort by score first (best matches)
+      if (b.score !== a.score) return b.score - a.score;
+      // Then randomize within same score
+      return Math.random() - 0.5;
+    })
+    .map(item => item.camp);
+  
+  currentPage = 1;
+  updateStats();
+  renderCards();
+  renderPagination();
+}
+
+function updateStats() {
+  document.getElementById('resultsCount').textContent = filteredCamps.length.toLocaleString();
+  document.getElementById('resultsText').textContent = 
+    filters.favoritesOnly ? 
+    `${filteredCamps.length} favorite camp${filteredCamps.length !== 1 ? 's' : ''}` :
+    `${filteredCamps.length} camp${filteredCamps.length !== 1 ? 's' : ''} found`;
+}
+
+// ============ RENDERING ============
+
+function renderCards() {
+  const container = document.getElementById('cardsView');
+  
+  if (filteredCamps.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <h3>No camps match your filters</h3>
+        <p>Try adjusting your search or filter criteria above</p>
+      </div>
+    `;
+    return;
+  }
+  
+  const start = (currentPage - 1) * RESULTS_PER_PAGE;
+  const end = start + RESULTS_PER_PAGE;
+  const pageCamps = filteredCamps.slice(start, end);
+  
+  container.innerHTML = pageCamps.map((camp, index) => {
+    const globalIndex = start + index;
+    const isFav = favorites.has(camp.campName);
+    const isOvernight = (camp.duration || '').toLowerCase().includes('overnight') || (camp.duration || '').toLowerCase().includes('sleepaway');
+    const hasAftercare = isYes(camp.aftercareAvailable);
+    const hasScholarship = isYes(camp.scholarshipsOffered);
+    const hasCIT = isYes(camp.citProgram);
+    const hasSchoolDayOff = isYes(camp.schoolDayOffCamps);
+    const isVerified = isYes(camp.verified);
+    const regLink = ensureUrl(camp.registrationLink);
+    
+    return `
+      <div class="camp-card" onclick="openCampModal(${globalIndex})">
+        <div class="card-header">
+          ${isVerified ? '<div class="verified-badge">✓ Verified</div>' : ''}
+          <div class="card-actions">
+            <button class="card-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}')" title="Add to favorites">
+              ${isFav ? '★' : '☆'}
+            </button>
           </div>
-        `;
-      }).join('');
-    }
-
-    // Comparison functions
-    function toggleComparison(event, campName) {
-      event.stopPropagation();
-      
-      if (comparisonList.has(campName)) {
-        comparisonList.delete(campName);
-      } else {
-        comparisonList.add(campName);
-      }
-      
-      localStorage.setItem('campComparison', JSON.stringify([...comparisonList]));
-      updateComparisonDisplay();
-      renderCards();
-    }
-
-    function updateComparisonDisplay() {
-      const count = comparisonList.size;
-      document.getElementById('compareCount').textContent = count;
-      document.getElementById('comparisonCountHeader').textContent = count;
-      
-      const compareBtn = document.getElementById('compareBtn');
-      const comparisonSection = document.getElementById('comparisonSection');
-      
-      if (count > 0) {
-        compareBtn.style.display = 'block';
-        comparisonSection.style.display = 'block';
-        renderComparisonGrid();
-      } else {
-        compareBtn.style.display = 'none';
-        comparisonSection.style.display = 'none';
-      }
-    }
-
-    function renderComparisonGrid() {
-      const container = document.getElementById('comparisonGrid');
-      const camps = allCamps.filter(c => comparisonList.has(c.campName));
-      
-      container.innerHTML = camps.map(camp => {
-        const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
-        const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
-        const regLink = (camp.registrationLink || '').trim();
-        
-        return `
-          <div class="comparison-card">
-            <button class="remove-comparison" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}')">×</button>
-            <h4>${escapeHtml(camp.campName)} ${isVerified ? '✓' : ''}</h4>
-            <div style="font-size: 14px; line-height: 1.8;">
-              <p><strong>Location:</strong> ${escapeHtml(camp.location)}</p>
-              <p><strong>Ages:</strong> ${camp.ageMin}-${camp.ageMax}</p>
-              <p><strong>Dates:</strong> ${formatDateRange(camp.startDate2026, camp.endDate2026)}</p>
-              <p><strong>Hours:</strong> ${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}</p>
-              <p><strong>Cost:</strong> ${escapeHtml(camp.costRange || 'Contact')}</p>
-              <p><strong>Duration:</strong> ${isOvernight ? 'Overnight' : 'Day Camp'}</p>
-              <p><strong>Setting:</strong> ${camp.indoorOutdoor || 'Not specified'}</p>
-              <p><strong>Aftercare:</strong> ${camp.aftercareAvailable === 'Y' ? 'Yes' : 'No'}</p>
-              <p><strong>Scholarships:</strong> ${camp.scholarshipsOffered === 'Y' ? 'Yes' : 'No'}</p>
-              ${regLink ? `<p><a href="${regLink}" target="_blank" style="color: var(--forest); font-weight: 700;">Register →</a></p>` : ''}
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function clearComparison() {
-      comparisonList.clear();
-      localStorage.setItem('campComparison', JSON.stringify([]));
-      updateComparisonDisplay();
-      renderCards();
-    }
-
-    function scrollToComparison() {
-      document.getElementById('comparisonSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // Open camp modal with full details
-    function openCampModal(index) {
-      const camp = filteredCamps[index];
-      const isFav = favorites.has(camp.campName);
-      const isVerified = camp.verified === 'Y' || camp.verified === 'Yes';
-      const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
-      const hasAftercare = camp.aftercareAvailable === 'Y';
-      const hasScholarship = camp.scholarshipsOffered === 'Y';
-      const hasCIT = camp.citProgram === 'Y';
-      const hasSchoolDayOff = camp.schoolDayOffCamps === 'Y';
-      const regLink = (camp.registrationLink || '').trim();
-      
-      document.getElementById('modalTitleSection').innerHTML = `
-        <div class="modal-title">${escapeHtml(camp.campName)}</div>
-        <div class="modal-subtitle">${escapeHtml(camp.location)} ${isVerified ? '• <span style="color: var(--verified);">✓ Verified by Camp</span>' : ''}</div>
-      `;
-      
-      document.getElementById('modalBody').innerHTML = `
-        ${camp.campDescription ? `
-          <div class="detail-section">
-            <h3>About This Camp</h3>
-            <div class="detail-description">${escapeHtml(camp.campDescription)}</div>
-          </div>
-        ` : ''}
-        
-        <div class="detail-section">
-          <h3>Schedule & Logistics</h3>
-          <div class="detail-grid">
-            <div class="detail-label">Dates</div>
-            <div class="detail-value">${camp.startDate2026 || 'TBD'} to ${camp.endDate2026 || 'TBD'}</div>
-            
-            <div class="detail-label">Daily Hours</div>
-            <div class="detail-value">${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}</div>
-            
-            <div class="detail-label">Age Range</div>
-            <div class="detail-value">${camp.ageMin}-${camp.ageMax} years old</div>
-            
-            <div class="detail-label">Cost</div>
-            <div class="detail-value">${escapeHtml(camp.costRange || 'Contact for pricing')}</div>
-            
-            <div class="detail-label">Duration</div>
-            <div class="detail-value">${camp.duration || 'Not specified'}</div>
-            
-            <div class="detail-label">Setting</div>
-            <div class="detail-value">${camp.indoorOutdoor || 'Not specified'}</div>
-            
-            ${camp.enrollmentOpenDate ? `
-              <div class="detail-label">Registration Opens</div>
-              <div class="detail-value">${camp.enrollmentOpenDate}</div>
-            ` : ''}
-          </div>
+          <div class="card-title">${escapeHtml(camp.campName)}</div>
+          <div class="card-location">${escapeHtml(camp.location)}</div>
         </div>
-        
-        <div class="detail-section">
-          <h3>Features & Options</h3>
+        <div class="card-body">
+          ${camp.campDescription ? `<div class="camp-description">${escapeHtml(camp.campDescription)}</div>` : ''}
+          
+          <div class="info-grid">
+            <div class="info-item">
+              <strong>Ages</strong>
+              ${camp.ageMin || '?'}-${camp.ageMax || '?'}
+            </div>
+            <div class="info-item">
+              <strong>Dates</strong>
+              ${formatDateRange(camp.startDate2026, camp.endDate2026)}
+            </div>
+            <div class="info-item">
+              <strong>Cost</strong>
+              ${escapeHtml(camp.costRange || 'Contact')}
+            </div>
+            <div class="info-item">
+              <strong>Hours</strong>
+              ${camp.startTime && camp.endTime ? `${camp.startTime}-${camp.endTime}` : 'TBD'}
+            </div>
+          </div>
+          
           <div class="tags">
-            ${hasAftercare ? '<span class="tag aftercare">Aftercare Available</span>' : '<span class="tag" style="opacity: 0.5;">No Aftercare</span>'}
-            ${hasScholarship ? '<span class="tag scholarship">Scholarships Offered</span>' : ''}
-            ${hasCIT ? '<span class="tag cit">CIT Program</span>' : ''}
-            ${hasSchoolDayOff ? '<span class="tag school-day">School Day Off Camps</span>' : ''}
+            <span class="tag ${isOvernight ? 'overnight' : 'day'}">${isOvernight ? 'Overnight' : 'Day Camp'}</span>
+            ${hasAftercare ? '<span class="tag aftercare">Aftercare</span>' : ''}
+            ${hasScholarship ? '<span class="tag scholarship">Scholarships</span>' : ''}
+            ${hasCIT ? '<span class="tag cit">CIT</span>' : ''}
+            ${hasSchoolDayOff ? '<span class="tag school-day">School Day Off</span>' : ''}
           </div>
         </div>
+        <div class="card-footer">
+          ${regLink ? 
+            `<a href="${regLink}" target="_blank" class="reg-link" onclick="event.stopPropagation()">Register Now →</a>` : 
+            '<span class="reg-link disabled">Registration TBD</span>'
+          }
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderPagination() {
+  const totalPages = Math.ceil(filteredCamps.length / RESULTS_PER_PAGE);
+  const pagination = document.getElementById('pagination');
+  
+  if (totalPages <= 1) {
+    pagination.style.display = 'none';
+    return;
+  }
+  
+  pagination.style.display = 'flex';
+  document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+  document.getElementById('prevPage').disabled = currentPage === 1;
+  document.getElementById('nextPage').disabled = currentPage === totalPages;
+}
+
+// ============ MODAL ============
+
+function openCampModal(index) {
+  const camp = filteredCamps[index];
+  const isFav = favorites.has(camp.campName);
+  const isVerified = isYes(camp.verified);
+  const isOvernight = (camp.duration || '').toLowerCase().includes('overnight');
+  const regLink = ensureUrl(camp.registrationLink);
+  
+  document.getElementById('modalTitleSection').innerHTML = `
+    <div class="modal-title">${escapeHtml(camp.campName)}</div>
+    <div class="modal-subtitle">${escapeHtml(camp.location)} ${isVerified ? '• <span style="color: var(--verified);">✓ Verified by Camp</span>' : ''}</div>
+  `;
+  
+  document.getElementById('modalBody').innerHTML = `
+    ${camp.campDescription ? `
+      <div class="detail-section">
+        <h3>About This Camp</h3>
+        <p style="line-height: 1.8;">${escapeHtml(camp.campDescription)}</p>
+      </div>
+    ` : ''}
+    
+    <div class="detail-section">
+      <h3>Schedule & Details</h3>
+      <div class="detail-grid">
+        <div class="detail-label">Dates</div>
+        <div class="detail-value">${camp.startDate2026 || 'TBD'} to ${camp.endDate2026 || 'TBD'}</div>
         
-        <div class="detail-section">
-          <div class="modal-actions">
-            <button class="btn btn-primary" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
-              ${isFav ? '★ Remove from Favorites' : '☆ Add to Favorites'}
-            </button>
-            <button class="btn btn-secondary" onclick="toggleComparison(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
-              ${comparisonList.has(camp.campName) ? 'Remove from Comparison' : 'Add to Comparison'}
-            </button>
-            ${regLink ? 
-              `<a href="${regLink}" target="_blank" class="btn btn-primary" style="text-decoration: none;">Register Now →</a>` : 
-              '<button class="btn" disabled>Registration Coming Soon</button>'
-            }
-          </div>
-        </div>
-      `;
-      
-      document.getElementById('campModal').classList.add('active');
-    }
-
-    function closeCampModal() {
-      document.getElementById('campModal').classList.remove('active');
-    }
-
-    // Render pagination
-    function renderPagination() {
-      const totalPages = Math.ceil(filteredCamps.length / RESULTS_PER_PAGE);
-      const pagination = document.getElementById('pagination');
-      
-      if (totalPages <= 1) {
-        pagination.style.display = 'none';
-        return;
+        <div class="detail-label">Hours</div>
+        <div class="detail-value">${camp.startTime && camp.endTime ? `${camp.startTime} - ${camp.endTime}` : 'TBD'}</div>
+        
+        <div class="detail-label">Ages</div>
+        <div class="detail-value">${camp.ageMin || '?'}-${camp.ageMax || '?'} years old</div>
+        
+        <div class="detail-label">Cost</div>
+        <div class="detail-value">${escapeHtml(camp.costRange || 'Contact for pricing')}</div>
+        
+        <div class="detail-label">Duration</div>
+        <div class="detail-value">${camp.duration || 'Not specified'}</div>
+        
+        <div class="detail-label">Setting</div>
+        <div class="detail-value">${camp.indoorOutdoor || 'Not specified'}</div>
+        
+        ${camp.enrollmentOpenDate ? `
+          <div class="detail-label">Registration Opens</div>
+          <div class="detail-value">${camp.enrollmentOpenDate}</div>
+        ` : ''}
+      </div>
+    </div>
+    
+    <div class="detail-section">
+      <h3>Features</h3>
+      <div class="tags" style="gap: 8px;">
+        <span class="tag ${isYes(camp.aftercareAvailable) ? 'aftercare' : ''}" style="${!isYes(camp.aftercareAvailable) ? 'opacity: 0.4;' : ''}">
+          ${isYes(camp.aftercareAvailable) ? '✓' : '✗'} Aftercare
+        </span>
+        <span class="tag ${isYes(camp.scholarshipsOffered) ? 'scholarship' : ''}" style="${!isYes(camp.scholarshipsOffered) ? 'opacity: 0.4;' : ''}">
+          ${isYes(camp.scholarshipsOffered) ? '✓' : '✗'} Scholarships
+        </span>
+        <span class="tag ${isYes(camp.citProgram) ? 'cit' : ''}" style="${!isYes(camp.citProgram) ? 'opacity: 0.4;' : ''}">
+          ${isYes(camp.citProgram) ? '✓' : '✗'} CIT Program
+        </span>
+        <span class="tag ${isYes(camp.schoolDayOffCamps) ? 'school-day' : ''}" style="${!isYes(camp.schoolDayOffCamps) ? 'opacity: 0.4;' : ''}">
+          ${isYes(camp.schoolDayOffCamps) ? '✓' : '✗'} School Day Off
+        </span>
+      </div>
+    </div>
+    
+    <div class="modal-actions">
+      <button class="btn ${isFav ? 'btn-secondary' : 'btn-primary'}" onclick="toggleFavorite(event, '${escapeHtml(camp.campName)}'); openCampModal(${index});">
+        ${isFav ? '★ Remove from Favorites' : '☆ Add to Favorites'}
+      </button>
+      ${regLink ? 
+        `<a href="${regLink}" target="_blank" class="btn btn-primary" style="text-decoration: none;">Register Now →</a>` : 
+        '<button class="btn" disabled>Registration Coming Soon</button>'
       }
-      
-      pagination.style.display = 'flex';
-      document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
-      document.getElementById('prevPage').disabled = currentPage === 1;
-      document.getElementById('nextPage').disabled = currentPage === totalPages;
-    }
+    </div>
+  `;
+  
+  document.getElementById('campModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-    // Toggle favorite
-    function toggleFavorite(event, campName) {
-      event.stopPropagation();
-      
-      if (favorites.has(campName)) {
-        favorites.delete(campName);
-      } else {
-        favorites.add(campName);
-      }
-      
-      localStorage.setItem('campFavorites', JSON.stringify([...favorites]));
-      document.getElementById('favCount').textContent = favorites.size;
-      document.getElementById('favBtnCount').textContent = favorites.size;
-      
-      renderCards();
-    }
+function closeCampModal() {
+  document.getElementById('campModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
-    // Clear all filters
-    function clearAllFilters() {
-      filters = {
-        search: '',
-        weeks: new Set(),
-        duration: new Set(),
-        setting: new Set(),
-        features: new Set(),
-        ageMin: null,
-        ageMax: null,
-        favoritesOnly: false
-      };
-      
-      document.getElementById('searchInput').value = '';
-      document.getElementById('ageMin').value = '';
-      document.getElementById('ageMax').value = '';
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      
-      applyFilters();
-    }
+// ============ FAVORITES ============
 
-    // Toggle favorites view
-    function toggleFavoritesView() {
-      filters.favoritesOnly = !filters.favoritesOnly;
-      const btn = document.getElementById('showFavorites');
-      if (filters.favoritesOnly) {
-        btn.classList.add('btn-primary');
-        btn.classList.remove('btn-secondary');
-      } else {
-        btn.classList.remove('btn-primary');
-        btn.classList.add('btn-secondary');
-      }
-      applyFilters();
-    }
+function toggleFavorite(event, campName) {
+  event.stopPropagation();
+  
+  if (favorites.has(campName)) {
+    favorites.delete(campName);
+  } else {
+    favorites.add(campName);
+  }
+  
+  localStorage.setItem('campFavorites', JSON.stringify([...favorites]));
+  document.getElementById('favCount').textContent = favorites.size;
+  document.getElementById('favBtnCount').textContent = favorites.size;
+  
+  renderCards();
+}
 
-    // Share functions
-    function closeShareModal() {
-      document.getElementById('shareModal').classList.remove('active');
-    }
+function toggleFavoritesView() {
+  filters.favoritesOnly = !filters.favoritesOnly;
+  isInitialLoad = false;
+  const btn = document.getElementById('showFavorites');
+  btn.classList.toggle('btn-primary', filters.favoritesOnly);
+  btn.classList.toggle('btn-secondary', !filters.favoritesOnly);
+  applyFilters();
+}
 
-    function copyShareLink() {
-      const url = window.location.href.split('?')[0];
-      navigator.clipboard.writeText(url);
-      showShareMessage('Link copied to clipboard!');
-    }
+// ============ CLEAR FILTERS ============
 
-    function emailList() {
-      const subject = encodeURIComponent('Colorado Summer Camps 2026');
-      const body = encodeURIComponent(`Found ${filteredCamps.length} camps!\n\n${filteredCamps.slice(0, 10).map(c => `${c.campName} - ${c.location}`).join('\n')}\n\nView all: ${window.location.href}`);
-      window.location.href = `mailto:?subject=${subject}&body=${body}`;
-      showShareMessage('Opening email...');
-    }
+function clearAllFilters() {
+  filters = {
+    search: '',
+    location: '',
+    weeks: new Set(),
+    duration: new Set(),
+    setting: new Set(),
+    features: new Set(),
+    ageMin: null,
+    ageMax: null,
+    favoritesOnly: false
+  };
+  
+  document.getElementById('searchInput').value = '';
+  document.getElementById('locationInput').value = '';
+  document.getElementById('ageMin').value = '';
+  document.getElementById('ageMax').value = '';
+  document.querySelectorAll('.pill.active, .week-pill.active').forEach(el => el.classList.remove('active'));
+  document.getElementById('showFavorites').classList.remove('btn-primary');
+  document.getElementById('showFavorites').classList.add('btn-secondary');
+  
+  isInitialLoad = true;
+  applyFilters();
+}
 
-    function downloadCSV() {
-      const headers = ['Camp Name', 'Location', 'Ages', 'Dates', 'Hours', 'Cost', 'Aftercare', 'Duration', 'Setting', 'Scholarships', 'CIT', 'School Day Off', 'Verified', 'Registration'];
-      const rows = filteredCamps.map(c => [
-        c.campName,
-        c.location,
-        `${c.ageMin}-${c.ageMax}`,
-        `${c.startDate2026} to ${c.endDate2026}`,
-        `${c.startTime || ''} - ${c.endTime || ''}`,
-        c.costRange,
-        c.aftercareAvailable === 'Y' ? 'Yes' : 'No',
-        c.duration || '',
-        c.indoorOutdoor,
-        c.scholarshipsOffered === 'Y' ? 'Yes' : 'No',
-        c.citProgram === 'Y' ? 'Yes' : 'No',
-        c.schoolDayOffCamps === 'Y' ? 'Yes' : 'No',
-        c.verified === 'Y' || c.verified === 'Yes' ? 'Yes' : 'No',
-        c.registrationLink
-      ]);
-      
-      const csv = [headers, ...rows].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'colorado-camps-2026.csv';
-      a.click();
-      showShareMessage('Download started!');
-    }
+// ============ SHARE ============
 
-    function showShareMessage(msg) {
-      const el = document.getElementById('shareMessage');
-      el.textContent = msg;
-      el.style.display = 'block';
-      setTimeout(() => el.style.display = 'none', 3000);
-    }
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('active');
+}
 
-    // Utilities
-    function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str || '';
-      return div.innerHTML;
-    }
+function copyShareLink() {
+  const url = window.location.href.split('?')[0];
+  navigator.clipboard.writeText(url);
+  showShareMessage('Link copied to clipboard!');
+}
 
-    function formatDateRange(start, end) {
-      if (!start || !end) return 'TBD';
-      try {
-        const s = new Date(start).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        const e = new Date(end).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        return `${s} - ${e}`;
-      } catch (e) {
-        return 'TBD';
-      }
-    }
+function emailList() {
+  const subject = encodeURIComponent('Colorado Summer Camp Options');
+  const body = encodeURIComponent(`Found ${filteredCamps.length} camps!\n\n${filteredCamps.slice(0, 10).map(c => `• ${c.campName} - ${c.location}`).join('\n')}\n\nView all: ${window.location.href}`);
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  showShareMessage('Opening email...');
+}
 
-    // Init
-    document.getElementById('favCount').textContent = favorites.size;
-    document.getElementById('favBtnCount').textContent = favorites.size;
-    loadCamps();
-  </script>
+function showShareMessage(msg) {
+  const el = document.getElementById('shareMessage');
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 3000);
+}
+
+// ============ INIT ============
+document.getElementById('favCount').textContent = favorites.size;
+document.getElementById('favBtnCount').textContent = favorites.size;
+loadCamps();
+
+// Close modals on escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeCampModal();
+    closeShareModal();
+  }
+});
+
+// Close modals on background click
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeCampModal();
+      closeShareModal();
+    }
+  });
+});
+</script>
+
 </body>
 </html>
